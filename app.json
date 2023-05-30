@@ -1,0 +1,7 @@
+{
+  "name": "AwesomeTemplate",
+  "displayName": "AwesomeTemplate",
+  "plugins": [
+    "expo-localization"
+  ]
+}

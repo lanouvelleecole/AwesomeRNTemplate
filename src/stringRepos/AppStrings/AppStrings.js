@@ -43,9 +43,19 @@ i18n.translations = {
     pressToDelete: 'Press here to delete',
     poubelle: 'Delete this shit.',
     doWeDelete: 'Do you really want to delete this shit ? ;-)',
+    workInit: 'Work init in progress...',
+    workFailed: 'This Work failed.... Try again soldier !',
+    workSuccess: 'The mission was completed successfully, soldier !',
+    workAlready:
+      'Work is already going on, soldier, take a break, have a Kit-Kat.',
   },
   fr: {
     /* PLOP_INJECT_FR_STRING */
+    workInit: 'Boulot en cours de préparation...',
+    workFailed:
+      'La mission à échoué, soldat... Réessaie ! Ne perds pas espoir soldat !',
+    workSuccess: 'La mission est réussie, soldat ! Repos !',
+    workAlready: "La mission est déja en cours d'exécution, soldat !",
     xOJ27832: 'Donne le nom de cette chose imaginaire ;-)',
     xIKzlTa0: "Oups... Cette valeur n'est pas valide.",
 

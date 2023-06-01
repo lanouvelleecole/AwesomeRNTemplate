@@ -1,0 +1,65 @@
+import { SqliteReduxWorkLists } from "src/reduxState/WorkLists/WorkListsGetterSetter";
+import { _StartWorkList } from "./_StartWorkList";
+
+/**
+ *
+ * @param {*} id
+ * l'uniqueId du WorkList
+ *
+ * @param {*} onDone
+ * callback qd work terminé
+ *
+ * @param {*} onError
+ * callback bobo work ou work déja en cours
+ *
+ * @param {*} workers
+ * un objet { <work_name>: <callback_qui_fé_le_work>  }
+ *
+ * @param {*} workSavers
+ * un objet { <work_name>: <callback_qui_fournit_un_output_pour_le_work>  }
+ *
+ * @param {*} workProgressCallbacks
+ * un objet { <work_name>: <callback_qui_fournit_l_avancement_du_work>  }
+ *
+ * @param {*} workList
+ * le boulot a sauvegarder
+ *
+ * @param {*} workCancelGrabbers
+ * un objet { <work_name>: <callback permettant de grab des données servant si besoin de cancel un Work> }
+ *
+ * @param {*} workCancellers
+ * un objet { <work_name>: <callback permettant si besoin de cancel un Work> }
+ *
+ * save ce WorkList dans la liste, puis démarre le work.
+ * Sinon, erreur
+ *
+ */
+
+export const _AddWorkListToDBAndStartWorkList = async ({
+  workList,
+  id,
+  onDone,
+  onError,
+  workers,
+  workSavers,
+  workCancelGrabbers,
+  workCancellers,
+}) => {
+  // ajoute ce WorkList dans la DB...
+  SqliteReduxWorkLists.AddRowToDatabase({
+    row: workList,
+    onSuccess: (data) => {
+      /// ...puis lance le processus de travail
+      _StartWorkList({
+        id,
+        onDone,
+        onError,
+        workers,
+        workSavers,
+        workCancelGrabbers,
+        workCancellers,
+      });
+    },
+    onError: onError,
+  });
+};

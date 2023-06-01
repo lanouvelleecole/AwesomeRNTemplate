@@ -257,6 +257,16 @@ npx yarn add react-native-uuid;
 npx yarn add date-fns;
 ```
 
+### expo-notifications
+
+```
+npx expo install expo-notifications
+```
+
+Setup natif:
+
+https://www.npmjs.com/package/expo-notifications
+
 aussi, dans android/build.gradle, set kotlinVersion comme ceci:
 
 ```

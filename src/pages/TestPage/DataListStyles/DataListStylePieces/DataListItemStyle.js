@@ -1,9 +1,12 @@
-import { HowLongAgo } from "src/services/HowLongAgo/HowLongAgo";
-import i18n from "i18n-js";
-import { Constants } from "src/constants/Constants.js";
-import { GoToEditItemInTestPage } from "../../pieces/NavHelpers/GoToEditItemInTestPage";
-import { useRoute } from "@react-navigation/native";
-import { PlayerGTAInstance } from "src/constants/PlayerGTA/PlayerGTA.js";
+/* PLOP_INJECT_IMPORT */
+import {TestJob} from 'src/pages/TestPage/pieces/TestJob/TestJob';
+
+import {HowLongAgo} from 'src/services/HowLongAgo/HowLongAgo';
+import i18n from 'i18n-js';
+import {Constants} from 'src/constants/Constants.js';
+import {GoToEditItemInTestPage} from '../../pieces/NavHelpers/GoToEditItemInTestPage';
+import {useRoute} from '@react-navigation/native';
+import {PlayerGTAInstance} from 'src/constants/PlayerGTA/PlayerGTA.js';
 
 /**
  *
@@ -15,6 +18,8 @@ import { PlayerGTAInstance } from "src/constants/PlayerGTA/PlayerGTA.js";
  * de la liste de données
  */
 export const DataListItemStyle = (item, index) => {
+  /* PLOP_INJECT_CODE */
+
   // la date de création de l'item
   const creationDate = new Date(
     item.creation_year,
@@ -22,11 +27,11 @@ export const DataListItemStyle = (item, index) => {
     item.creation_day,
     item.creation_hour ?? 0,
     item.creation_minute ?? 0,
-    item.creation_second ?? 0
+    item.creation_second ?? 0,
   );
 
   // la date de création de l'item, format texte
-  const howLongAgo = HowLongAgo({ creationDate: creationDate });
+  const howLongAgo = HowLongAgo({creationDate: creationDate});
 
   // trucs de react-navigation
   const route = useRoute();
@@ -58,10 +63,12 @@ export const DataListItemStyle = (item, index) => {
         // self explanatory
         infoIconUrl: null,
         infoIconPath: null,
-        infoTxt: `${i18n.t("DOB")} ${howLongAgo}`,
+        infoTxt: `${i18n.t('DOB')} ${howLongAgo}`,
       },
     ],
     onItemClicked: () => {
+      TestJob({initialWorkData: 42});
+
       /*
       
       navigation.navigate("<SomeFancyNewPage>", {

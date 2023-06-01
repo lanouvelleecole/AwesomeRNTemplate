@@ -3,10 +3,10 @@
 // permet de chager des icones.
 
 // permet d'update l'UI quand tout est chargé.
-import { useEffect } from "react";
+import {useEffect} from 'react';
 
 // permet de charger les sons
-import { FetchEverythingNeededAsynchronously } from "./Fetchers/FetchEverythingNeededAsynchronously";
+import {FetchEverythingNeededAsynchronously} from './Fetchers/FetchEverythingNeededAsynchronously';
 
 /**
  * @returns rien
@@ -17,7 +17,7 @@ import { FetchEverythingNeededAsynchronously } from "./Fetchers/FetchEverythingN
  * dans notre cas, on charge des données utiles avant
  * d'afficher l'application.
  */
-export const FetchEverythingNeeded = ({ appState, setAppState }) => {
+export const FetchEverythingNeeded = ({appState, setAppState}) => {
   let initialState = null;
 
   useEffect(() => {

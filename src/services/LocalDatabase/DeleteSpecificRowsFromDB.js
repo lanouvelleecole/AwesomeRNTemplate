@@ -1,5 +1,5 @@
-import { RunIfPossible } from "src/services/RunIfPossible/RunIfPossible";
-import { InitLocalDatabase } from "./InitLocalDatabase";
+import {RunIfPossible} from 'src/services/RunIfPossible/RunIfPossible';
+import {InitLocalDatabase} from './InitLocalDatabase';
 
 /**
  *
@@ -70,7 +70,7 @@ const _DeleteSpecificRowsFromDB = ({
     rowNamesAndTypes: rowNamesAndTypes,
   });
 
-  db.transaction((tx) => {
+  db.transaction(tx => {
     // passing sql query and parameters:null
     tx.executeSql(
       `DELETE FROM ${dbName} WHERE ${rowName} = ?`,
@@ -80,16 +80,16 @@ const _DeleteSpecificRowsFromDB = ({
       (txObj, resultSet) => {
         resolve(resultSet.rowsAffected);
 
-        RunIfPossible({ func: onSuccess, args: resultSet.rowsAffected });
+        RunIfPossible({func: onSuccess, args: resultSet.rowsAffected});
       },
 
       // failure callback which sends two things Transaction object and Error
       (txObj, error) => {
         reject(error);
-        RunIfPossible({ func: onError, args: error });
-      }
+        RunIfPossible({func: onError, args: error});
+      },
     );
   });
 };
 
-export { DeleteSpecificRowsFromDB };
+export {DeleteSpecificRowsFromDB};

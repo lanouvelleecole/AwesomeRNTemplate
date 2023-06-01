@@ -1,14 +1,14 @@
-import { store } from "src/reduxState/reduxStore";
+import {store} from 'src/reduxState/reduxStore';
 
 // permet exécution optionnelle de callback
-import { RunIfPossible } from "src/services/RunIfPossible/RunIfPossible";
+import {RunIfPossible} from 'src/services/RunIfPossible/RunIfPossible';
 
 // Le AsyncThunk de suppression/triage de données stockées dans AppState.
-import { deleteSpecificRowsFromDB } from "../AsyncThunks/deleteSpecificRowsFromDB";
+import {deleteSpecificRowsFromDB} from '../AsyncThunks/deleteSpecificRowsFromDB';
 
 // Le nom de la DB Sqlite,
 // ainsi qu'une description des noms/types des rows de cette DB Sqlite
-import { rowNamesAndTypes, databaseName } from "../DatabaseInfo";
+import {rowNamesAndTypes, databaseName} from '../DatabaseInfo';
 
 /**
  * @param {*} rowName, le nom de row qui détermine le maillon faible
@@ -45,23 +45,23 @@ export const DeleteSpecificRowsFromDB = ({
           rowName,
           rowValue,
           rowNamesAndTypes,
-        })
+        }),
       )
       .unwrap()
       /**
        * cette callback, s'execute lorsque les
        * données ont été supprimées dans Sqlite/Redux
        */
-      .then((qtyDeleted) => {
-        resolve(qtyDeleted);
+      .then(rowData => {
+        resolve(rowData.qtyAffected);
 
-        RunIfPossible({ func: onSuccess, args: qtyDeleted });
+        RunIfPossible({func: onSuccess, args: rowData.qtyAffected});
       })
       /** si bobo durant ajouts/répartitions */
-      .catch((e) => {
+      .catch(e => {
         reject(e);
 
-        RunIfPossible({ func: onError, args: e });
+        RunIfPossible({func: onError, args: e});
       });
   });
 };

@@ -85,6 +85,18 @@ npx react-native start
 cette commande démarre le serveur Metro, ensuite tu peux démarrer l'appli en cliquant sur l'icone,
 et tu peux programmer ton appli, et voir les changements en direct après sauvegarde de code.
 
+Pour build l'appli sans install, durant debug, pour check si le build se fait sans erreur, utilise cette commande, dans <root>/android/ folder:
+
+```
+./gradlew assembleDebug
+```
+
+ou
+
+```
+./gradlew assembleRelease
+```
+
 ## C'est quoi ce repo ?
 
 AwesomeTemplate est une appli react native (un template/canvas pour toi)

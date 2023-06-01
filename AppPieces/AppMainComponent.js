@@ -1,4 +1,5 @@
 /* PLOP_INJECT_IMPORT */
+import {TestPage} from 'src/pages/TestPage/TestPage';
 
 // nécéssaire
 import React from 'react';
@@ -71,11 +72,16 @@ export const AppMainComponent = ({onLayoutRootView, appState}) => {
           <NavigationContainer>
             {/* initialRouteName, c'est la page par défaut a l'allumage de l'appli */}
             <Stack.Navigator
-              initialRouteName="Home"
+              initialRouteName="TestPage"
               screenOptions={{
                 headerShown: false,
               }}>
               {/* PLOP_INJECT_PAGES_PARAMS */}
+              <Stack.Screen
+                name="TestPage"
+                component={TestPage}
+                initialParams={appState.initialState}
+              />
 
               {/* la page par défaut */}
               <Stack.Screen

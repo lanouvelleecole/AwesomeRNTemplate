@@ -1,8 +1,8 @@
 // permet de créer des AsyncThunk
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import {createAsyncThunk} from '@reduxjs/toolkit';
 
 // permet accès CRUD sur DB Sqlite
-import { DeleteSpecificRowsFromDB } from "src/services/LocalDatabase/DeleteSpecificRowsFromDB";
+import {DeleteSpecificRowsFromDB} from 'src/services/LocalDatabase/DeleteSpecificRowsFromDB';
 
 /**
  * Cet AsyncThunk supprime des rows
@@ -15,10 +15,10 @@ import { DeleteSpecificRowsFromDB } from "src/services/LocalDatabase/DeleteSpeci
  * et aussi dans le gros panier .allRows
  */
 export const deleteSpecificRowsFromDB = createAsyncThunk(
-  "AppState/DeleteSpecificRowsFromDB",
+  'AppState/DeleteSpecificRowsFromDB',
   async (requestData, thunkAPI) => {
     // combien de rows supprimés.
-    const qtyAffected = DeleteSpecificRowsFromDB(requestData);
+    const qtyAffected = await DeleteSpecificRowsFromDB(requestData);
 
     // transmet le nom et valeur du row déterminant les pommes pourries
     // au Reducer correspondant,
@@ -28,5 +28,5 @@ export const deleteSpecificRowsFromDB = createAsyncThunk(
       rowValue: requestData.rowValue,
       qtyAffected: qtyAffected,
     };
-  }
+  },
 );

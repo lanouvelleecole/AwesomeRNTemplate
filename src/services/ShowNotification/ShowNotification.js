@@ -1,10 +1,6 @@
 /* PLOP_INJECT_IMPORT */
 //import React from "react";
 
-import * as Notifications from 'expo-notifications';
-
-import * as Permissions from 'expo-permissions';
-
 /**
  *
  * @param {*} title

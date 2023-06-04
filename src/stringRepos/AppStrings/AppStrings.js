@@ -13,44 +13,8 @@ import i18n from 'i18n-js';
 
 // les strings selon pays
 i18n.translations = {
-  en: {
-    /* PLOP_INJECT_ENG_STRING */
-    xOJ27832: 'What is the name of this imaginary thing ;-)',
-    xIKzlTa0: 'Oops... This value is not valid.',
-
-    xoNrsOnM: 'Title',
-
-    xFjKWX7F: 'Title',
-    xRnUhKCQ: 'Empty Page. Fill me up, please!',
-    x4HQzKi7: 'Fill me in!',
-
-    welcome: 'Hello',
-    country: 'en',
-    typeHere: 'Type here.',
-    OK: 'OK',
-    DOB: 'Date Of Birth',
-    Add: 'Add',
-    Edit: 'Edit',
-    chooseCategory: 'Choose an option.',
-    besoinsDeBase: 'Basic needs',
-    besoinsSpirituels: 'Spiritual needs',
-    besoinsTerritoriaux: 'Territorial needs',
-    TypeSomePlz: 'You need to write something',
-    TypeBabyName: 'Write the babys name',
-    oui: 'YES',
-    non: 'NO',
-    annuler: 'CANCEL',
-    pressToDelete: 'Press here to delete',
-    poubelle: 'Delete this shit.',
-    doWeDelete: 'Do you really want to delete this shit ? ;-)',
-    workInit: 'Work init in progress...',
-    workFailed: 'This Work failed.... Try again soldier !',
-    workSuccess: 'The mission was completed successfully, soldier !',
-    workAlready:
-      'Work is already going on, soldier, take a break, have a Kit-Kat.',
-  },
-  fr: {
-    /* PLOP_INJECT_FR_STRING */
+  src: {
+    /* PLOP_INJECT_SRC_STRING */
     workInit: 'Boulot en cours de préparation...',
     workFailed:
       'La mission à échoué, soldat... Réessaie ! Ne perds pas espoir soldat !',
@@ -101,6 +65,7 @@ const AppStrings = () => {
   // When a value is missing from a language,
   // it'll fallback to another language with the key present.
   i18n.fallbacks = true;
+  i18n.defaultLocale = "src";
 };
 
 export {AppStrings};

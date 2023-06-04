@@ -420,6 +420,10 @@ npx maslow add-default-app-template
 
 npx react-native run-android --variant=release
 
+## Pour créer des APK de debug/release, sans avoir a utiliser d'USB, via EXPO EAS
+
+https://docs.expo.dev/build/setup/
+
 ## Troubleshooting
 
 - Si une erreur du genre:

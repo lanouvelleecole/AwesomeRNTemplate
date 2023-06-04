@@ -3,5 +3,10 @@
   "displayName": "AwesomeTemplate",
   "plugins": [
     "expo-localization"
-  ]
+  ],
+  "extra": {
+    "eas": {
+      "projectId": "c363b876-d520-473c-a9ca-2ee82e58f2ad"
+    }
+  }
 }

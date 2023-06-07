@@ -1,3 +1,5 @@
+import {strings_pt} from './translations/strings_pt.js';
+
 /* PLOP_INJECT_IMPORT */
 import * as Localization from 'expo-localization';
 import i18n from 'i18n-js';
@@ -18,15 +20,15 @@ i18n.translations = {
     workInit: 'Boulot en cours de préparation...',
     workFailed:
       'La mission à échoué, soldat... Réessaie ! Ne perds pas espoir soldat !',
-    workSuccess: 'La mission est réussie, soldat ! Repos !',
+    workSuccess: 'La mission est réussie, soldat ! Repos !: ',
     workAlready: "La mission est déja en cours d'exécution, soldat !",
-    xOJ27832: 'Donne le nom de cette chose imaginaire ;-)',
+    xOJ27832: 'Donne le nom de cette chose imaginaire ;-): ',
     xIKzlTa0: "Oups... Cette valeur n'est pas valide.",
 
-    xoNrsOnM: 'Titre',
+    xoNrsOnM: 'Titre: ',
 
-    xFjKWX7F: 'Titre',
-    xRnUhKCQ: 'Page Vide. Remplis moi, stp !',
+    xFjKWX7F: 'Titre: ',
+    xRnUhKCQ: 'Page Vide. Remplis moi, stp !: ',
     x4HQzKi7: 'Remplis moi !',
 
     welcome: 'Bonjour',
@@ -49,23 +51,28 @@ i18n.translations = {
     pressToDelete: 'Appuie ici pour supprimer',
     poubelle: 'Direction la poubelle cosmique.',
     doWeDelete: 'Veux tu vraiment supprimer cette merde ? ;-)',
+    /* PLOP_INJECT_SRC_END */
   },
+  /* PLOP_INJECT_INTL_STRINGS */
+  pt: strings_pt,
 };
 
 /**
  * la fonction d'init de répertoire de strings
  */
 const AppStrings = () => {
-  console.log("Cette function d'init de répertoire doit run 1 seule fois");
+  const deviceLocale = Localization.locale;
+
+  //console.log(`Locale is: ${deviceLocale}`);
 
   // Set the locale once
   // at the beginning of your app.
-  i18n.locale = Localization.locale;
+  i18n.locale = deviceLocale;
 
   // When a value is missing from a language,
   // it'll fallback to another language with the key present.
   i18n.fallbacks = true;
-  i18n.defaultLocale = "src";
+  i18n.defaultLocale = 'src';
 };
 
 export {AppStrings};

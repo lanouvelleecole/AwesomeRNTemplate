@@ -44,6 +44,9 @@ package.json
 
 <ADDR_IP_PHONE> = The Tailscale IP Address of the physical Android device.
 
+<YOUR_GITHUB_URL> = your github repo url, for pushing 
+
 AppPieces/Fetchers/FetchGoogleSignIn.js
 
 <GGL_CLIENT_ID> = Your Google Web Client ID (necessary for firebase/firestore)
+

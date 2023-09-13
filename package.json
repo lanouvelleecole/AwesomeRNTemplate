@@ -3,10 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "first-push": "git add . && git commit -m \"first commit\" && git branch -M main && git remote add origin <YOUR_GITHUB_URL> && git push -u origin main",
-    "alpha-push": "git add . && git commit -m \"first commit\" && git branch -M main && git remote add origin git@github.com:lanouvelleecole/AwesomeRNTemplate.git && git push -u origin main",
+    "first-push": "npm run git-init && git add . && git commit -m \"first commit\" && git branch -M main && git remote add origin <YOUR_GITHUB_URL> && git push -u origin main",
     "git-init": "rimraf .git && git init",
-    "first-push-gh": "npm run first-push && git remote set-url origin",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
@@ -16,16 +14,10 @@
     "eas-init": "npx eas login && npx eas build:configure",
     "eas-debug-build-android": "npx eas build -p android --profile development",
     "push": "(git add . && git commit -m \"I'm a bigger pusher than Ice-T homie !!!\" && git push) || exit 0",
-    "start-debug": "npx yarn android",
     "adb-connect": "adb connect <ADDR_IP_PHONE>:5555",
     "adb-disconnect": "(adb disconnect) || exit 0",
-    "adb-tcpip": "(adb tcpip 5555) || exit 0",
-    "adb-kill-server": "(adb kill-server) || exit 0",
-    "adb-start-server": "(adb start-server) || exit 0",
-    "start-wireless-debug": "(npm run adb-kill-server && npm run adb-start-server && npm run adb-disconnect && npm run adb-tcpip && npm run adb-connect && npm run start-debug) || exit 0",
-    "rebuild-app": "npm i && npx react-native run-android",
-    "clean-app": "cd android && gradlew clean && cd ..",
-    "start-wireless-usb": "(npm run adb-kill-server && npm run adb-start-server && npm run adb-disconnect && npm run adb-tcpip && npm run adb-connect) || exit 0"
+    "start-debug-android": "(npm run adb-connect && npm run android) || exit 0",
+    "start-debug-ios": "(npm run adb-connect && npm run ios) || exit 0"
   },
   "dependencies": {
     "@notifee/react-native": "^7.8.0",

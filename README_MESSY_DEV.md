@@ -770,30 +770,28 @@ Si tu suis tous ce processus, alors tu pourras faire du debug via breakpoints, l
 
 ## Pour utiliser Firebase/Firestore
 
-Create a project on console.firebase.com, for your app.
-Add the following rules to the Rules section of Cloud Firestore,
-so only authenticated users can interact with the DB:
+Go to
 
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    // Allow read and write access to authenticated users.
-    match /{document=**} {
-      allow read, write: if request.auth != null;
-    }
-  }
-}
+https://https://console.cloud.google.com/apis/credentials
 
-Get the SHA ! for your app.
-cd ./android && ./gradlew signingReport
+and setup the OAUTH Consent stuff.
 
-Take the SHA1 of Task :app:signingReport, Variant: debugAndroidTest, Config: debug
+Choose 'External' for the User Type
 
-Update it in the Firebase Console under Project Settings, Android app, add the SHA1
+After that, add all the required fields. You can ignore the fields that are not required, for now.
+We'll worry more about these shenanigans later, when we'll publish your app to the Google Play Store.
 
-Download the google-services.json, put it in ./android/app
+Once the OAUTH stuff is created, go to the OAUTH Consert screen page,
 
-Go to Authentication, then Sign-in method, then press Google
+https://https://console.cloud.google.com/apis/credentials/consent
 
-Take the Web client ID and use that for your GoogleSignin.configure({ webClientId: ... });
-This Web client ID should be the same as listed in https://console.developers.google.com/apis/credentials?project=<your_project_id> -> Credentials -> OAuth 2 Client ID -> Web Client
+and set the publication state to 'Production' mode
+
+Then go to 
+
+https://console.cloud.google.com/apis/credentials
+
+and click on the button to create credentials, and choose the OAUTH Client ID option
+
+Choose 'Web Application' as the Application Type,
+and click 'Create'

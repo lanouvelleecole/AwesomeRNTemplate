@@ -72,6 +72,7 @@ service cloud.firestore {
 }
 ```
 
+
 Go to Authentication, activate Authentication, then Sign-in method, then activate Google Sign in.
 Choose the default email address in the dropdown menu.
 

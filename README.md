@@ -34,6 +34,34 @@ Then go to package.json, and look for this pattern:
 
 replace <ADDR_IP_PHONE> with the Tailscale IP address of your android device.
 
+Create a project on console.firebase.com, for your app.
+Add the following rules to the Rules section of Cloud Firestore,
+so only authenticated users can interact with the DB:
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow read and write access to authenticated users.
+    match /{document=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
+
+Get the SHA ! for your app.
+cd ./android && ./gradlew signingReport
+
+Take the SHA1 of Task :app:signingReport, Variant: debugAndroidTest, Config: debug
+
+Update it in the Firebase Console under Project Settings, Android app, add the SHA1
+
+Download the google-services.json, put it in ./android/app
+
+Go to Authentication, then Sign-in method, then press Google
+
+Take the Web client ID and use that for your GoogleSignin.configure({ webClientId: ... });
+This Web client ID should be the same as listed in https://console.developers.google.com/apis/credentials?project=<your_project_id> -> Credentials -> OAuth 2 Client ID -> Web Client
+
 Finally, run this command to install/develop/debug your app (on a physical Android device)
 
 ```

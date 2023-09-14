@@ -34,10 +34,33 @@ Then go to package.json, and look for this pattern:
 
 replace <ADDR_IP_PHONE> with the Tailscale IP address of your android device.
 
-Create a project on console.firebase.com, for your app.
-Add the following rules to the Rules section of Cloud Firestore,
-so only authenticated users can interact with the DB:
+Create a Cloud Firestore project for your app, at:
 
+https://console.firebase.google.com
+
+Create a Android application inside this project 
+
+You will need to add a SHA 1 key, during this creation process.
+
+Run the command below to get this SHA 1 key:
+
+```
+cd ./android && ./gradlew signingReport
+```
+
+The SHA 1 key you need is the one with:
+
+Task :app:signingReport, 
+Variant: debugAndroidTest, 
+Config: debug
+
+You will also need the applicationId, it is available at android/app/build.gradle
+
+Once the Android application is created, Download the google-services.json, put it in the android/app folder.
+
+Create a Cloud Firestore database, and add the following rules to the Rules section of Cloud Firestore:
+
+```
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -47,21 +70,34 @@ service cloud.firestore {
     }
   }
 }
+```
 
-Get the SHA ! for your app.
-cd ./android && ./gradlew signingReport
+Go to Authentication, activate Authentication, then Sign-in method, then activate Google Sign in.
+Choose the default email address in the dropdown menu.
 
-Take the SHA1 of Task :app:signingReport, Variant: debugAndroidTest, Config: debug
+Once activated, copy the Web client ID, available in the same page, in another dropdown menu 
+(the dropdown menu about the Web SDK)
+and all this web client id to the
 
-Update it in the Firebase Console under Project Settings, Android app, add the SHA1
+AppPieces\Fetchers\FetchGoogleSignIn.js
 
-Download the google-services.json, put it in ./android/app
+file. Uncomment the code in this file, and replace <GGL_CLIENT_ID> with the client id you just copied
 
-Go to Authentication, then Sign-in method, then press Google
+```
+import { GoogleSignin } from "@react-native-google-signin/google-signin";
 
-Take the Web client ID and use that for your GoogleSignin.configure({ webClientId: ... });
-This Web client ID should be the same as listed in https://console.developers.google.com/apis/credentials?project=<your_project_id> -> Credentials -> OAuth 2 Client ID -> Web Client
+export async function FetchGoogleSignIn() {
+  /*
+  
+  GoogleSignin.configure({
+    webClientId: "<GGL_CLIENT_ID>",
+  });
 
+  */
+
+  return true;
+}
+```
 Finally, run this command to install/develop/debug your app (on a physical Android device)
 
 ```
@@ -75,6 +111,8 @@ Then re-run the same command
 ```
 npm run start-debug-android
 ```
+
+And wait for 2-3 minutes, and your app will install successfully ! Bravo !
 
 ## App code setup 
 

@@ -26,16 +26,26 @@ Turn on developer options in your android device.
 
 Turn on USB debugging in the developer options
 
-plug your device (smartphone/tablet) 
-to your computer, with a USB cable. 
+Install Tailscale, on your Android device AND on your computer.
 
-If a notification appears, asking you to allow your computer, say yes, and toggle the 'remember' choice.
+Then go to package.json, and look for this pattern:
 
-Plug your android device to your computer, with a USB cable, 
-and run this command to install/develop/debug your app
+<ADDR_IP_PHONE>
+
+replace <ADDR_IP_PHONE> with the Tailscale IP address of your android device.
+
+Finally, run this command to install/develop/debug your app (on a physical Android device)
 
 ```
-npm run start-debug
+npm run start-debug-android
+```
+
+The first time you run this command, it will fail, and a notification will appear on your Android device, asking you to allow your computer, say yes, and toggle the 'remember' choice.
+
+Then re-run the same command
+
+```
+npm run start-debug-android
 ```
 
 ## App code setup 

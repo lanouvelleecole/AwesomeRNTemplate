@@ -5,9 +5,9 @@
   "scripts": {
     "first-push": "npm run git-init && git add . && git commit -m \"first commit\" && git branch -M main && git remote add origin <YOUR_GITHUB_URL> && git push -u origin main",
     "git-init": "rimraf .git && git init",
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "start": "react-native start",
+    "android": "npx react-native run-android",
+    "ios": "npx react-native run-ios",
+    "start": "npx react-native start",
     "test": "jest",
     "lint": "eslint .",
     "fix-lint-errors": "eslint . --fix",

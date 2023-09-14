@@ -1,8 +1,8 @@
-# Maslow (A React Native app template)
+# <YOUR_APP_NAME> (A React Native app template)
 
-## Create a React Native app using the npx maslow create-react-native-app command
+## Create a React Native app using the npx <MAS> create-react-native-app command
 
-Install MaslowGPT from npm
+Install <MAS_CAMEL>GPT from npm
 
 https://npmjs.com/LINK_COMING_SOON
 
@@ -11,7 +11,7 @@ Run the following command, and follow the steps, to create your very own React N
 (It could be the next big thing, or your own little recipe cooking or todo app ! Your imagination is the limit ;-)
 
 ```
-npx maslow create-react-native-app
+npx <MAS> create-react-native-app
 ```
 
 Once created, navigate to the root folder of this baby app, and install the npm dependencies

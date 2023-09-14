@@ -21,7 +21,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 // permet d'accéder a des globales
 import { Constants } from 'src/constants/Constants.js';
 import { PlayerGTAInstance } from 'src/constants/PlayerGTA/PlayerGTA.js';
-import MaslowUtils from "maslowutils"
 
 // cache le splash screen quand on en a plus besoin.
 // quand tout (fonts, icones, etc...) est chargé

@@ -16,8 +16,9 @@
     "push": "(git add . && git commit -m \"I'm a bigger pusher than Ice-T homie !!!\" && git push) || exit 0",
     "adb-connect": "adb connect <ADDR_IP_PHONE>:5555",
     "adb-disconnect": "(adb disconnect) || exit 0",
-    "start-debug-android": "(npm run adb-connect && npm i && npm run android) || exit 0",
-    "start-debug-ios": "(npm run adb-connect && npm i && npm run ios) || exit 0"
+    "start-debug-android": "(npm run adb-connect && npm run android) || exit 0",
+    "start-debug-ios": "(npm run adb-connect && npm run ios) || exit 0",
+    "clean-app": "cd android && gradlew clean && cd .."
   },
   "dependencies": {
     "@notifee/react-native": "^7.8.0",
@@ -44,7 +45,6 @@
     "expo-sqlite": "~11.1.1",
     "expo-web-browser": "~12.1.1",
     "i18n-js": "^4.3.0",
-    "maslowutils": "^1.7.67",
     "react": "18.2.0",
     "react-native": "0.71.8",
     "react-native-blob-util": "^0.17.3",

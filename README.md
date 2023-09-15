@@ -45,7 +45,7 @@ You will need to add a SHA 1 key, during this creation process.
 Run the command below to get this SHA 1 key:
 
 ```
-cd ./android && ./gradlew signingReport
+npm run get-sha-keys
 ```
 
 The SHA 1 key you need is the one with:
@@ -56,9 +56,8 @@ Config: debug
 
 You will also need the applicationId, it is available at android/app/build.gradle
 
-Once the Android application is created, Download the google-services.json, put it in the android/app folder.
-
-Create a Cloud Firestore database, and add the following rules to the Rules section of Cloud Firestore:
+Once the Android application is created, Create a Cloud Firestore database, and add a collection named 'SqliteReduxDatabases' in it. 
+then add the following rules to the Rules section of Cloud Firestore:
 
 ```
 rules_version = '2';
@@ -76,9 +75,9 @@ service cloud.firestore {
 Go to Authentication, activate Authentication, then Sign-in method, then activate Google Sign in.
 Choose the default email address in the dropdown menu.
 
-Once activated, copy the Web client ID, available in the same page, in another dropdown menu 
+Once activated, copy the Web client ID, available in the same page, in a dropdown menu 
 (the dropdown menu about the Web SDK)
-and all this web client id to the
+and add this Web Client ID to the
 
 AppPieces\Fetchers\FetchGoogleSignIn.js
 
@@ -99,6 +98,9 @@ export async function FetchGoogleSignIn() {
   return true;
 }
 ```
+
+Then download the google-services.json file, and add it in the android/app folder.
+
 Finally, run this command to install/develop/debug your app (on a physical Android device)
 
 ```

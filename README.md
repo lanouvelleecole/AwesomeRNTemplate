@@ -134,3 +134,69 @@ AppPieces/Fetchers/FetchGoogleSignIn.js
 
 <GGL_CLIENT_ID> = Your Google Web Client ID (necessary for firebase/firestore)
 
+## To permanently set Github username/password
+
+you can set up Git to use SSH authentication instead, which is more secure and convenient. 
+
+Here are the steps to fix this issue:
+
+1. **Generate SSH Key Pair (if you don't already have one):**
+   If you don't already have an SSH key pair, you can generate one using the following command:
+
+   ```bash
+   ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+   ```
+
+   Replace `your_email@example.com` with your actual email address. You can leave the passphrase empty if you want to avoid entering it every time.
+
+2. **Add Your SSH Public Key to Your Git Provider:**
+
+   Display the SSH key with
+
+   Ubuntu
+   ```
+   cat ~/.ssh/id_rsa.pub
+   ```
+
+   Windows CMD
+   ```
+   type %userprofile%\.ssh\id_rsa.pub
+   ```
+
+   Windows Powershell
+   ```
+   Get-Content $env:userprofile\.ssh\id_rsa.pub
+   ```
+
+   Copy the whole ssh-rsa ...... stuff, then go to this page in your Github account
+
+   https://github.com/settings/ssh/new
+
+   and create a SSH entry for your server/computer. Paste this SSH where needed.
+
+3. **Update Your Git Remote URL:**
+   Change your Git remote URL from HTTPS to SSH. You can do this using the following command:
+
+   ```bash
+   git remote set-url origin git@github.com:user/repo.git
+   ```
+
+   Replace `git@github.com:user/repo.git` with the SSH URL of your Git repository.
+
+4. **Test SSH Authentication:**
+   To make sure SSH authentication is working, you can run the following command:
+
+   ```bash
+   ssh -T git@github.com
+   ```
+
+   Replace `github.com` with the hostname of your Git provider. You should see a message indicating successful authentication.
+
+   Something like:
+
+   Hi <YOUR_GITHUB_USERNAME>! You've successfully authenticated, but GitHub does not provide shell access.
+
+5. **Perform a Git Pull:**
+   Now, when you run `git pull` on the server side, it should use SSH authentication, and you won't be prompted for a username and password.
+
+By following these steps, you'll set up SSH authentication for your Git repository, which is more secure and should eliminate the need to enter your credentials every time you perform Git operations.

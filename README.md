@@ -26,6 +26,11 @@ Turn on developer options in your android device.
 
 Turn on USB debugging in the developer options
 
+Plug your device (smartphone/tablet) to your computer,
+via USB, and allow the USB debugging popup message.
+Also, check the 'always allow' button.
+You can now unplug your device from the computer.
+
 Install Tailscale, on your Android device AND on your computer.
 
 Then go to package.json, and look for this pattern:

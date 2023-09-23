@@ -200,3 +200,21 @@ Here are the steps to fix this issue:
    Now, when you run `git pull` on the server side, it should use SSH authentication, and you won't be prompted for a username and password.
 
 By following these steps, you'll set up SSH authentication for your Git repository, which is more secure and should eliminate the need to enter your credentials every time you perform Git operations.
+
+## Troubleshooting
+
+### To fix the following Watchman error
+
+```
+metro-file-map: Watchman crawl failed. Retrying once with node crawler.
+Usually this happens when watchman isn't running. Create an empty `.watchmanconfig` file in your project's root folder or initialize a git or hg 
+repository in your project.
+```
+
+Run this command below:
+
+```
+watchman watch-del-all; watchman shutdown-server
+```
+
+### ......

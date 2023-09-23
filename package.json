@@ -14,7 +14,7 @@
     "eas-init": "npx eas login && npx eas build:configure",
     "eas-debug-build-android": "npx eas build -p android --profile development",
     "push": "(git add . && git commit -m \"I'm a bigger pusher than Ice-T homie !!!\" && git push) || exit 0",
-    "adb-connect": "adb connect <ADDR_IP_PHONE>:5555",
+    "adb-connect": "adb tcpip 57391 && adb connect <ADDR_IP_PHONE>:57391",
     "adb-disconnect": "(adb disconnect) || exit 0",
     "start-debug-android": "(npm run adb-connect && npm run android) || exit 0",
     "start-debug-ios": "(npm run adb-connect && npm run ios) || exit 0",
@@ -59,8 +59,6 @@
     "react-native-vector-icons": "^9.2.0",
     "react-native-vision-camera": "^2.15.6",
     "react-native-webview": "^13.2.2",
-    "react-native-youtube-iframe": "^2.2.2",
-    "react-native-ytdl": "^4.8.3",
     "react-redux": "^8.0.5"
   },
   "devDependencies": {

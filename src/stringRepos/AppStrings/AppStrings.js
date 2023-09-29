@@ -1,3 +1,4 @@
+import { strings_en } from "./translations/strings_en.js";
 /* PLOP_INJECT_IMPORT */
 
 /* PLOP_INJECT_IMPORT */
@@ -61,6 +62,7 @@ const AppStrings = () => {
       /* PLOP_INJECT_SRC_END */
     },
     /* PLOP_INJECT_INTL_STRINGS */
+    "en": strings_en,
   });
 
   // Set the locale once

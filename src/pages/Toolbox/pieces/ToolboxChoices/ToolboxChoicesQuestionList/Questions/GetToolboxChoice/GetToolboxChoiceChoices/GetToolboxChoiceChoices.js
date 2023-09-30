@@ -1,9 +1,10 @@
+import { app_strings } from "../../../../../../../../stringRepos/AppStrings/AppStrings.js";
+
 /* PLOP_INJECT_IMPORT */
 import { DatabaseObjects } from 'src/reduxState/DatabaseObjects';
 import { RestoreLocalDatabasesFromCloud } from 'src/services/LocalDatabase/RestoreLocalDatabasesFromCloud';
 import { SaveLocalDatabasesToCloud } from 'src/services/LocalDatabase/SaveLocalDatabasesToCloud';
 import { ShowNotification } from 'src/services/ShowNotification/ShowNotification';
-import { app_strings } from 'src/stringRepos/AppStrings/AppStrings';
 
 /* PLOP_INJECT_GLOBAL_CODE */
 
@@ -54,7 +55,7 @@ export const GetToolboxChoiceChoicesActions = {
         ShowNotification({
           id: 0,
           title: "Maslow",
-          body: "Tes donnees sont maintenant en securite dans le cloud !",
+          body: app_strings.t("xNUgKxo"),
           extra: null,
         });
       },
@@ -62,7 +63,7 @@ export const GetToolboxChoiceChoicesActions = {
         ShowNotification({
           id: 0,
           title: "Maslow",
-          body: "La sauvegarde de donnees dans le cloud n'a pas reussi ! Reessaie encore, soldat !",
+          body: app_strings.t('xAmgHBho'),
           extra: null,
         });
       }
@@ -77,7 +78,7 @@ export const GetToolboxChoiceChoicesActions = {
         ShowNotification({
           id: 0,
           title: "Maslow",
-          body: "Tes donnees sont maintenant restorees, a partir du cloud !",
+          body: app_strings.t('xSpTMl1n'),
           extra: null,
         });
       },
@@ -85,7 +86,7 @@ export const GetToolboxChoiceChoicesActions = {
         ShowNotification({
           id: 0,
           title: "Maslow",
-          body: "La restauration de donnees a partir du cloud n'a pas reussi ! Reessaie encore, soldat !",
+          body: app_strings.t('x0qpHyto'),
           extra: null,
         });
       }

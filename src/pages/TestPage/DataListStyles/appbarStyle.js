@@ -54,11 +54,11 @@ export const getAppbarStyle = () => {
     appbarFont: Constants.defaultFontFamily,
 
     // montre l'icone a gauche de l'icone menu (3 ptit point) ?
-    showAppbarIcon: false,
+    showAppbarIcon: true,
 
     // des icones venant de https://materialdesignicons.com/
     // l'icone en question si showAppbarIcon = true
-    appbarIcon: "plus-thick",
+    appbarIcon: "tools",
 
     // la couleur d'arrière plan de l'appbar
     appbarBackgroundColor: Constants.defaultBackgroundColor,
@@ -81,7 +81,7 @@ export const getAppbarStyle = () => {
 
     // callback d'actions a effectuer si on clique sur l'icone de l'appbar
     onAppbarIconClicked: () => {
-      navigation.navigate("<SomeFancyScreen>");
+      navigation.navigate("Toolbox");
     },
 
     // callback d'actions a effectuer si on clique sur la flèche de retour arrière

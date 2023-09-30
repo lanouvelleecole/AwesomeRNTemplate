@@ -13,6 +13,11 @@ const AppStrings = () => {
   const i18n = new I18n({
     src: {
       /* PLOP_INJECT_SRC_STRING */
+      x0qpHyto: `La restauration de donnees a partir du cloud n'a pas reussi ! Reessaie encore, soldat !`,
+      xSpTMl1n: `Tes donnees sont maintenant restorees, a partir du cloud !`,
+      xAmgHBho: `La sauvegarde de donnees dans le cloud n'a pas reussi ! Reessaie encore, soldat !`,
+      xNUgKxo: `Tes donnees sont maintenant en securite dans le cloud !`,
+
       xK6jy8ax: "Ecris le nom de cette chose , aventurier !",
       xdBhrfN: "Oups... Cette valeur n'est pas valide.",
 

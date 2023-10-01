@@ -13,57 +13,46 @@ const AppStrings = () => {
   const i18n = new I18n({
     src: {
       /* PLOP_INJECT_SRC_STRING */
-      x0qpHyto: `La restauration de donnees a partir du cloud n'a pas reussi ! Reessaie encore, soldat !`,
-      xSpTMl1n: `Tes donnees sont maintenant restorees, a partir du cloud !`,
-      xAmgHBho: `La sauvegarde de donnees dans le cloud n'a pas reussi ! Reessaie encore, soldat !`,
-      xNUgKxo: `Tes donnees sont maintenant en securite dans le cloud !`,
+      "x0qpHyto": `The cloud data restore failed ! Try again, soldier !`,
+      "xSpTMl1n": `Your data is now locally restored, from the cloud !`,
+      "xAmgHBho": `The cloud save failed ! Try again, soldier !`,
+      "xNUgKxo": `Your data is now safe in the cloud !`,
 
-      xK6jy8ax: "Ecris le nom de cette chose , aventurier !",
-      xdBhrfN: "Oups... Cette valeur n'est pas valide.",
-
-      xBlM1Zi: "Titre",
-      xriErHWm: "Cette page est vide ! Remplis moi s'il te plait",
-      xE8cpvzD: "Remplis moi !",
-
-      pressToDelete:
-        'Appuie sur le bouton pour supprimer cet élement de ta liste',
-      ZeFokinToolz: "Les Outils",
-
-      Add: 'Ajoute',
-      Edit: 'Modifie',
-      cancel: 'Mission annulée',
-      country: 'fr',
-      typeHere: 'Ecris ici',
-      doWeDelete: 'Veux-tu vraiment supprimer cet élément ?',
-      poubelle: 'Direction la poubelle cosmique.',
-      DOB: 'Né il y a',
-      OK: 'OK',
-      TypeSomePlz: 'Il faut écrire quelque chose.',
-      TypeBabyName: 'Donne lui un nom.',
-      askExtStoragePerm:
-        "L'appli à besoin de stocker des données sur ton appareil. Acceptes-tu ?",
-      question: 'Que veux-tu faire ?',
-      plzWait: "Veuillez patienter, s'il vous plait.",
-      annuler: 'Annuler',
-      non: 'Non',
-      oui: 'Oui',
-      besoinsDeBase: 'D.I.Y., Production de nourriture, Bricolage, etc...',
-      besoinsSpirituels:
-        'Relations humaines, Psychologie, Philosophie, Spiritualité, etc...',
-      besoinsTerritoriaux: 'AutoDéfense, Arts Martiaux, etc...',
-      chooseCategory:
-        'Ton tutoriel se situe dans quelle catégorie de la Pyramide de Maslow ?',
-      Toolbox: 'Outils',
-      NoTools: 'Pas d outils dispo',
-      AddTool: 'Ajoute un outil',
-
-      GetToolboxChoice: 'Quel outil veux-tu créer ?',
-      WrongTool: 'Cet outil est caca',
-
-      SaveDBCloud: 'Sauvegarde tes donnees utilisateur dans le cloud',
-      BackupDBCloud:
-        'Recupere tes donnees utilisateur, stockees dans le cloud',
-
+      "xK6jy8ax": "Write the name of this thing, adventurer!",
+      "xdBhrfN": "Oops... This value is not valid.",
+      "xBlM1Zi": "Title",
+      "xriErHWm": "This page is empty! Please fill me up.",
+      "xE8cpvzD": "Fill me up!",
+      "pressToDelete": "Press the button to remove this item from your list",
+      "ZeFokinToolz": "The Tools",
+      "Add": "Add",
+      "Edit": "Modify",
+      "cancel": "Mission cancelled",
+      "country": "en",
+      "typeHere": "Write here",
+      "doWeDelete": "Do you really want to delete this item?",
+      "poubelle": "Heading to the cosmic trash bin.",
+      "DOB": "Date of birth",
+      "OK": "OK",
+      "TypeSomePlz": "You need to write something.",
+      "TypeBabyName": "Give him a name.",
+      "askExtStoragePerm": "The app needs to store data on your device. Do you accept?",
+      "question": "What do you want to do?",
+      "plzWait": "Please wait, if you please.",
+      "annuler": "Cancel",
+      "non": "No",
+      "oui": "Yes",
+      "besoinsDeBase": "D.I.Y., Food Production, Handicrafts, etc...",
+      "besoinsSpirituels": "Human Relations, Psychology, Philosophy, Spirituality, etc...",
+      "besoinsTerritoriaux": "Self-Defense, Martial Arts, etc...",
+      "chooseCategory": "Which category of Maslow's Pyramid does your tutorial fall under?",
+      "Toolbox": "Tools",
+      "NoTools": "No tools available",
+      "AddTool": "Add a tool",
+      "GetToolboxChoice": "What tool do you want to create?",
+      "WrongTool": "This tool is crap",
+      "SaveDBCloud": "Save your user data in the cloud",
+      "BackupDBCloud": "Recover your user data, stored in the cloud"
       /* PLOP_INJECT_SRC_END */
     },
     /* PLOP_INJECT_INTL_STRINGS */

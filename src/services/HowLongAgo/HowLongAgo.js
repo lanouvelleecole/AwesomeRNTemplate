@@ -2,11 +2,11 @@
 //import React from "react";
 
 // permet date de création jolie comme youtube.
-import {formatDistance} from 'date-fns';
-import {fr, enUS} from 'date-fns/locale';
+import { format } from 'date-fns';
+import { fr, enUS } from 'date-fns/locale';
 
 // multilingue
-import {app_strings} from 'src/stringRepos/AppStrings/AppStrings';
+import { app_strings } from 'src/stringRepos/AppStrings/AppStrings';
 
 /**
  *
@@ -16,31 +16,41 @@ import {app_strings} from 'src/stringRepos/AppStrings/AppStrings';
  *
  * Cette fonction permet de ...
  */
-const HowLongAgo = ({creationDate}) => {
+const HowLongAgo = ({ creationDate }) => {
   /* PLOP_INJECT_CODE */
 
   // l'instant T
-  const now = new Date();
+
+  const formattedDate = GetFormattedDate();
+
 
   // ça fait combien de temps que ce truc est né
   const DOB = creationDate
-    ? formatDistance(creationDate, now, properLocale())
+    ? formattedDate
     : null;
 
   // date de naissance, en texte
   return DOB;
 };
 
-export {HowLongAgo};
+export function GetFormattedDate() {
+  const locale = Intl.DateTimeFormat().resolvedOptions().locale;
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
 
-function properLocale() {
-  const locale = app_strings.t('country');
-
-  if (locale == 'fr') {
-    return {locale: fr};
-  } else if (locale == 'en') {
-    return {locale: enUS};
+  if (locale.startsWith('en')) {
+    // For English locales, format the date as 'yyyy/MM/dd'
+    return `${year}/${month}/${day}`;
   } else {
-    return null;
+    // For other locales, you can use the default date formatting
+    return date.toLocaleDateString(locale);
   }
 }
+
+
+
+
+export { HowLongAgo };
+

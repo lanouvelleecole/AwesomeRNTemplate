@@ -19,7 +19,7 @@ const strings_en = {
   "typeHere": "Write here",
   "doWeDelete": "Do you really want to delete this item?",
   "poubelle": "Heading to the cosmic trash bin.",
-  "DOB": "Born ago",
+  "DOB": "Date of birth",
   "OK": "OK",
   "TypeSomePlz": "You need to write something.",
   "TypeBabyName": "Give him a name.",

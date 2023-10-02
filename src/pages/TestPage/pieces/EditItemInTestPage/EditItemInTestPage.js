@@ -28,6 +28,7 @@ import { onItemCreationError } from "./onItemCreationError";
 import { SqliteReduxTestPageState } from "src/reduxState/TestPageState/TestPageStateGetterSetter";
 import { useRoute } from "@react-navigation/native";
 import { app_strings } from "src/stringRepos/AppStrings/AppStrings";
+import { SqliteReduxTestPage } from "src/reduxState/TestPage/TestPageGetterSetter";
 
 /**
  *
@@ -47,6 +48,11 @@ export const EditItemInTestPage = () => {
 
   const route = useRoute();
 
+  // currentItem is the item that just got long clicked in the list of data
+  const currentItemUniqueId = TestPageState.itemUniqueId;
+  const currentItem =
+    SqliteReduxTestPage.GetItemByUniqueID(currentItemUniqueId);
+
   return (
     <Camouflage
       chosenOne={TestPageState.chosenOne}
@@ -55,6 +61,8 @@ export const EditItemInTestPage = () => {
     >
       {/* Une UI de récup/modif de données */}
       <GetUserInput
+        /* permet une persistence des donnes de cet item, durant */
+        persistenceID={currentItem?.uniqueId}
         /* direction vers laquelle va le scroll */
         scrollDirection={"horizontal_one_by_one"}
         /* montre appbar, ou pas ? */

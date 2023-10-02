@@ -15,7 +15,9 @@ import { ToolboxCreationList } from "../../AddItemToToolbox/ToolboxCreationList/
  * Cela correspond aux questions de ToolboxCreationList, avec une proposition de suppression en +.
  */
 const ToolboxEditList = () => {
-  return ToolboxCreationList().concat(DeleteItemOrNot());
+  return ToolboxCreationList().concat([
+    /* PLOP_INJECT_CODE */
+  ].reverse()).concat(DeleteItemOrNot());
 };
 
 export { ToolboxEditList };

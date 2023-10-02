@@ -15,7 +15,9 @@ import { TestPageCreationList } from "../../AddItemToTestPage/TestPageCreationLi
  * Cela correspond aux questions de TestPageCreationList, avec une proposition de suppression en +.
  */
 const TestPageEditList = () => {
-  return TestPageCreationList().concat(DeleteItemOrNot());
+  return TestPageCreationList().concat([
+    /* PLOP_INJECT_CODE */
+  ].reverse()).concat(DeleteItemOrNot());
 };
 
 export { TestPageEditList };

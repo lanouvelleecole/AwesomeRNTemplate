@@ -30,6 +30,7 @@ import { onItemCreationError } from "./onItemCreationError";
 import { SqliteReduxTestPageState } from "src/reduxState/TestPageState/TestPageStateGetterSetter";
 import { useRoute } from "@react-navigation/native";
 import { app_strings } from "src/stringRepos/AppStrings/AppStrings";
+import { GetUniqueID } from "src/services/GetUniqueID/GetUniqueID";
 
 /**
  *
@@ -48,6 +49,8 @@ export const AddItemToTestPage = () => {
 
   const route = useRoute();
 
+  const itemUniqueId = GetUniqueID(7);
+
   /**
    *
    * Camouflage, c'est une cape d'invisibilité conditionnelle,
@@ -62,6 +65,8 @@ export const AddItemToTestPage = () => {
     >
       {/* Une UI de récup/modif de données */}
       <GetUserInput
+        /* permet persistence de donnes d'UI */
+        persistenceID={itemUniqueId}
         /* direction vers laquelle va le scroll */
         scrollDirection={"horizontal_one_by_one"}
         /* montre appbar, ou pas ? */
@@ -96,7 +101,7 @@ export const AddItemToTestPage = () => {
         }}
         /* callback si on réussit  à obtenir données valides, via questions UI */
         onSuccess={(answers) => {
-          onItemCreationSuccess(answers);
+          onItemCreationSuccess(answers, itemUniqueId);
         }}
         /* callback si données input sont invalides */
         onError={({ errMsg, errAnswerIndex, answers }) => {

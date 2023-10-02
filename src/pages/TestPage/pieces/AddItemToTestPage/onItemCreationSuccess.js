@@ -9,10 +9,9 @@ import { AddItemToDB } from "./AddItemToDB";
  * on retourne vers la liste de données.
  * et on ajoute les données dans la base de données.
  */
-export function onItemCreationSuccess(answers) {
+export function onItemCreationSuccess(answers, uniqueId) {
   GoToTestPageList();
 
-  const uniqueId = GetUniqueID();
 
   AddItemToDB(answers, uniqueId);
 }

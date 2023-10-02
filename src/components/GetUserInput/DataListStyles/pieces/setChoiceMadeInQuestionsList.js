@@ -1,4 +1,5 @@
 import { SqliteReduxGUIState } from "src/reduxState/GUIState/GUIStateGetterSetter";
+import { GetAnswerObject } from "./extractDataFromQuestions";
 
 /**
  *
@@ -28,8 +29,22 @@ export const setChoiceMadeInQuestionsList = (
   // les réponses actuelles aux questions du QCM. stockées dans le state GUIState
   const answers = SqliteReduxGUIState.GetAnswers(persistenceID);
 
+  const answer = answers[questionEnCours.name];
 
-  // stocke la réponse dans l'objet réponses
-  answers[questionEnCours.name].value = choiceChosen.choiceValue;
+  // ajoute la valeur actuelle dans answers
+  if (answer) {
+    //console.log(`This answer already exists, update it: ${JSON.stringify(answer, null, 2)}`);
+
+    answers[questionEnCours.name].value = choiceChosen.choiceValue;
+  } else {
+    //console.log(`This answer doesn't exists, create it: ${JSON.stringify(question, null, 2)}`);
+
+    const answer = GetAnswerObject(questionEnCours.name);
+
+    answers[questionEnCours.name] = answer;
+    answers[questionEnCours.name].value = choiceChosen.choiceValue;
+  }
+
+
   SqliteReduxGUIState.SetAnswers({ answers, persistenceID });
 };

@@ -78,7 +78,7 @@ const DeleteItemOrNot = () => {
     // un callback qui vérifie que l'input est valide
     // true si valide false autrement
     checkInput: ({ input, answers, answer, answerIndex }) => {
-      return input != null;
+      return true;
     },
     // un message d'erreur à afficher si les données ne sont pas valides
     errMsg: ({ answers, answer, answerIndex }) => {

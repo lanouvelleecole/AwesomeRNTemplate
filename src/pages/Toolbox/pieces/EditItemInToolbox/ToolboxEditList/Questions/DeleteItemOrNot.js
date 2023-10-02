@@ -1,22 +1,22 @@
-import {PlayerGTAInstance} from 'src/constants/PlayerGTA/PlayerGTA';
+import { PlayerGTAInstance } from 'src/constants/PlayerGTA/PlayerGTA';
 /* PLOP_INJECT_IMPORT */
 
 // un identifiant unique
-import {GetUniqueID} from 'src/services/GetUniqueID/GetUniqueID';
+import { GetUniqueID } from 'src/services/GetUniqueID/GetUniqueID';
 
 // permet multilingue
-import {app_strings} from 'src/stringRepos/AppStrings/AppStrings';
+import { app_strings } from 'src/stringRepos/AppStrings/AppStrings';
 
 // permet choix conditionnel
-import {OuiOuNon} from 'src/services/OuiOuNon/OuiOuNon';
+import { OuiOuNon } from 'src/services/OuiOuNon/OuiOuNon';
 
 // permet accès CRUD à une base de données Sqlite + Redux
-import {SqliteReduxToolbox} from 'src/reduxState/Toolbox/ToolboxGetterSetter';
-import {GoToToolboxList} from '../../../NavHelpers/GoToToolboxList';
+import { SqliteReduxToolbox } from 'src/reduxState/Toolbox/ToolboxGetterSetter';
+import { GoToToolboxList } from '../../../NavHelpers/GoToToolboxList';
 
-import {SqliteReduxToolboxState} from 'src/reduxState/ToolboxState/ToolboxStateGetterSetter';
+import { SqliteReduxToolboxState } from 'src/reduxState/ToolboxState/ToolboxStateGetterSetter';
 
-import {useRoute} from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native';
 
 /* PLOP_INJECT_GLOBAL_CODE */
 
@@ -38,11 +38,11 @@ const DeleteItemOrNot = () => {
     type: 'choices', //"text" || "number" || "choices" || "custom",
 
     // requis
-    description: ({answers, answer, answerIndex}) => {
+    description: ({ answers, answer, answerIndex }) => {
       return app_strings.t('pressToDelete');
     },
     // requis, si "type" === "choices"
-    choices: ({answers, answer, answerIndex}) => {
+    choices: ({ answers, answer, answerIndex }) => {
       return [
         {
           choiceDescription: app_strings.t('poubelle'),
@@ -62,7 +62,7 @@ const DeleteItemOrNot = () => {
     value: false,
 
     // la valeur par défaut a mettre dans le text input
-    defaultValue: ({answers, answer, answerIndex}) => '',
+    defaultValue: ({ answers, answer, answerIndex }) => '',
 
     // les flex du message ou de la zone d'input
     messageFlex: 1,
@@ -76,11 +76,11 @@ const DeleteItemOrNot = () => {
 
     // un callback qui vérifie que l'input est valide
     // true si valide false autrement
-    checkInput: ({input, answers, answer, answerIndex}) => {
-      return input != null;
+    checkInput: ({ input, answers, answer, answerIndex }) => {
+      return true;
     },
     // un message d'erreur à afficher si les données ne sont pas valides
-    errMsg: ({answers, answer, answerIndex}) => {
+    errMsg: ({ answers, answer, answerIndex }) => {
       return "Blue pill, Red pill ? Choose a pilule s'il te please.";
     },
   };
@@ -134,4 +134,4 @@ const deleteItemAndGoBackToList = () => {
   });
 };
 
-export {DeleteItemOrNot};
+export { DeleteItemOrNot };

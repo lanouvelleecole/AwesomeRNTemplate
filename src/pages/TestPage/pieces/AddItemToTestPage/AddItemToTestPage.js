@@ -9,7 +9,7 @@ import { GetUserInput } from "src/components/GetUserInput/GetUserInput";
 import { TestPageCreationList } from "./TestPageCreationList/TestPageCreationList";
 
 // some shyt
-import { React } from "react";
+import { React, useState } from "react";
 
 // constantes globales
 import { Constants } from "src/constants/Constants.js";
@@ -49,7 +49,8 @@ export const AddItemToTestPage = () => {
 
   const route = useRoute();
 
-  const itemUniqueId = GetUniqueID(7);
+  const [itemUniqueId, setItemUniqueId] = useState(GetUniqueID(7));
+
 
   /**
    *

@@ -49,8 +49,6 @@ export const AddItemToTestPage = () => {
 
   const route = useRoute();
 
-  const [itemUniqueId, setItemUniqueId] = useState(GetUniqueID(7));
-
 
   /**
    *
@@ -67,7 +65,7 @@ export const AddItemToTestPage = () => {
       {/* Une UI de récup/modif de données */}
       <GetUserInput
         /* permet persistence de donnes d'UI */
-        persistenceID={itemUniqueId}
+        persistenceID={TestPageState.itemUniqueId}
         /* direction vers laquelle va le scroll */
         scrollDirection={"horizontal_one_by_one"}
         /* montre appbar, ou pas ? */
@@ -102,7 +100,7 @@ export const AddItemToTestPage = () => {
         }}
         /* callback si on réussit  à obtenir données valides, via questions UI */
         onSuccess={(answers) => {
-          onItemCreationSuccess(answers, itemUniqueId);
+          onItemCreationSuccess(answers, TestPageState.itemUniqueId);
         }}
         /* callback si données input sont invalides */
         onError={({ errMsg, errAnswerIndex, answers }) => {

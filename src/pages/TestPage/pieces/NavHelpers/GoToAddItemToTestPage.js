@@ -1,4 +1,6 @@
 import { SqliteReduxTestPageState } from "src/reduxState/TestPageState/TestPageStateGetterSetter";
+import { SetPageState } from "./SetPageState";
+import { GetUniqueID } from "src/services/GetUniqueID/GetUniqueID";
 
 /**
  * Let's go back to AddItemToTestPage
@@ -8,20 +10,13 @@ export function GoToAddItemToTestPage() {
   const TestPageState = SqliteReduxTestPageState.GetTestPageStateFirstRow();
 
   // setter
-  SqliteReduxTestPageState.UpdateSpecificRowsFromDB({
-    row: {
-      ...TestPageState,
+  SetPageState({
+    ...TestPageState,
 
-      // l'écran actuellement affiché dans TestPage.js
-      chosenOne: "AddItemToTestPage",
-    },
-    rowName: "uniqueId",
-    rowValue: "TestPageState",
-    onSuccess: (row) => {
-      /*console.log(
-        `state de page modifé avec succès dans TestPage.`
-      );*/
-    },
-    onError: (e) => {},
+    // l'écran actuellement affiché dans TestPage.js
+    chosenOne: "AddItemToTestPage",
+
+    itemUniqueId: GetUniqueID(7)
   });
+
 }

@@ -1,4 +1,6 @@
+import { SqliteReduxGUIAnswers } from "src/reduxState/GUIAnswers/GUIAnswersGetterSetter";
 import { GetGUIStateFirstRow } from "./GetGUIStateFirstRow";
+import { TryParse } from "src/services/TryParse/TryParse";
 
 /**
  *
@@ -9,14 +11,13 @@ export const GetAnswers = (persistenceID) => {
 
 
   if (persistenceID != null) {
-    const GUIState = GetGUIStateFirstRow();
-    const answersPersistentString = GUIState.answersPersistent;
+    const answersPersistent = SqliteReduxGUIAnswers.GetItemByUniqueID(persistenceID);
 
-    //console.log(`Answers as string: ${answersString}`);
+    //console.log(`The GUIAnswers: ${JSON.stringify(answersPersistent, null, 2)}`);
 
-    const answersPersistent = JSON.parse(answersPersistentString);
+    const answers = TryParse(answersPersistent?.answers);
 
-    return answersPersistent[persistenceID] ?? {}
+    return answers;
   } else {
     const GUIState = GetGUIStateFirstRow();
     const answersString = GUIState.answers;

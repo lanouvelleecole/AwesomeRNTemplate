@@ -101,7 +101,7 @@ export const EditItemInTestPage = () => {
         }}
         /* callback si données input sont invalides */
         onError={({ errMsg, errAnswerIndex, answers }) => {
-          onItemCreationError(answers, errAnswerIndex, errMsg);
+          onItemCreationError(answers, errAnswerIndex, errMsg, questions);
         }}
       ></GetUserInput>
     </Camouflage>

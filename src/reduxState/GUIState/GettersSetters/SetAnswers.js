@@ -1,6 +1,7 @@
 import { Constants } from "src/constants/Constants";
 import { GetGUIStateFirstRow } from "./GetGUIStateFirstRow";
 import { UpdateSpecificRowsFromDB } from "./UpdateSpecificRowsFromDB";
+import { SqliteReduxGUIAnswers } from "src/reduxState/GUIAnswers/GUIAnswersGetterSetter";
 
 /**
  * @param {*} answers
@@ -12,45 +13,59 @@ export const SetAnswers = ({ answers, persistenceID, onSuccess, onError }) => {
 
 
   if (persistenceID != null) {
-    const GUIState = GetGUIStateFirstRow();
-
-    let answersPersistentObj = JSON.parse(GUIState.answersPersistent);
-    answersPersistentObj[persistenceID] = answers;
-
-
-    const newRow = {
-      ...GUIState,
-      answersPersistent: JSON.stringify(answersPersistentObj),
-      showGUI: Constants.true,
-    };
-
-
-    //console.log(`Newest row + answers: ${JSON.stringify(newRow)}`);
-
-    UpdateSpecificRowsFromDB({
-      row: newRow,
-      rowName: "uniqueId",
-      rowValue: "GUIState",
-      onSuccess: onSuccess,
-      onError: onError,
+    SetAnswersPersistent({
+      answers,
+      persistenceID,
+      onSuccess,
+      onError
     });
   } else {
-    const GUIState = GetGUIStateFirstRow();
-
-    const newRow = {
-      ...GUIState,
-      answers: JSON.stringify(answers),
-      showGUI: Constants.true,
-    };
-
-    //console.log(`Newest row + answers: ${JSON.stringify(newRow)}`);
-
-    UpdateSpecificRowsFromDB({
-      row: newRow,
-      rowName: "uniqueId",
-      rowValue: "GUIState",
-      onSuccess: onSuccess,
-      onError: onError,
-    });
+    SetAnswersNonPersistent({ answers, onSuccess, onError });
   }
 };
+
+function SetAnswersNonPersistent({ answers, onSuccess, onError }) {
+  const GUIState = GetGUIStateFirstRow();
+
+  const newRow = {
+    ...GUIState,
+    answers: JSON.stringify(answers),
+    showGUI: Constants.true,
+  };
+
+  //console.log(`Newest row + answers: ${JSON.stringify(newRow)}`);
+  UpdateSpecificRowsFromDB({
+    row: newRow,
+    rowName: "uniqueId",
+    rowValue: "GUIState",
+    onSuccess: onSuccess,
+    onError: onError,
+  });
+}
+
+function SetAnswersPersistent({ answers, persistenceID, onSuccess, onError }) {
+
+  SqliteReduxGUIAnswers.UpdateSpecificRowsFromDB({
+    row: { answers: JSON.stringify(answers), uniqueId: persistenceID },
+    rowName: "uniqueId",
+    rowValue: persistenceID,
+    onSuccess: (qtyAffected) => {
+      const GUIState = GetGUIStateFirstRow();
+
+      const newRow = {
+        ...GUIState,
+        showGUI: Constants.true,
+      };
+
+      UpdateSpecificRowsFromDB({
+        row: newRow,
+        rowName: "uniqueId",
+        rowValue: "GUIState",
+        onSuccess: onSuccess,
+        onError: onError,
+      });
+    },
+    onError: (e) => { },
+  });
+}
+

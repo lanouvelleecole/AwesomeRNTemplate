@@ -11,8 +11,8 @@ import { SetPageState } from "../NavHelpers/SetPageState";
  *
  * si bobo, on affiche un message
  */
-export function onItemCreationError(answers, errAnswerIndex, errMsg) {
-  const qtyAnswers = Object.keys(answers).length;
+export function onItemCreationError(answers, errAnswerIndex, errMsg, questions) {
+  const qtyAnswers = questions.length;
 
   // getter, contient le state actuel
   const TestPageState = SqliteReduxTestPageState.GetTestPageStateFirstRow();

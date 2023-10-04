@@ -11,8 +11,8 @@ import { Constants } from "src/constants/Constants";
  *
  * si bobo, affiche message de bobo
  */
-export function onItemCreationError(answers, errAnswerIndex, errMsg) {
-  const qtyAnswers = Object.keys(answers).length;
+export function onItemCreationError(answers, errAnswerIndex, errMsg, questions) {
+  const qtyAnswers = questions.length;
 
   // getter, contient le state actuel
   const TestPageState = SqliteReduxTestPageState.GetTestPageStateFirstRow();

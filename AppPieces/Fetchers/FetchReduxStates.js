@@ -1,5 +1,8 @@
 /* PLOP_INJECT_IMPORT */
 import {
+  SqliteReduxGUIAnswers
+} from "src/reduxState/GUIAnswers/GUIAnswersGetterSetter";
+import {
   SqliteReduxTestPageState
 } from "src/reduxState/TestPageState/TestPageStateGetterSetter";
 import {
@@ -28,6 +31,12 @@ export const FetchReduxStates = async () => {
    */
 
   /* PLOP_INJECT_REDUX_INIT */
+
+  // initialize the sqlite/redux mechanism      
+  await SqliteReduxGUIAnswers.InitGUIAnswers({
+    debugMode: true,
+  });
+
 
 
   await SqliteReduxTestPageState.InitTestPageState({

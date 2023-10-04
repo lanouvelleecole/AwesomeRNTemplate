@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Constants } from "src/constants/Constants.js";
 import { SqliteReduxGUIState } from "src/reduxState/GUIState/GUIStateGetterSetter.js";
 import { extractDataFromQuestions } from "./DataListStyles/pieces/extractDataFromQuestions.js";
+import { SqliteReduxGUIAnswers } from "src/reduxState/GUIAnswers/GUIAnswersGetterSetter.js";
 
 /**
  * @returns rien
@@ -35,8 +36,6 @@ export const onComponentLifeAndDeath = ({ hardReset, persistenceID, questions, s
 function AddDefaultNonPersistentAnswers(persistenceID, questions, setGUIStateReady) {
   // Anything in here is fired on component mount.
 
-
-
   const GUIState = SqliteReduxGUIState.GetGUIState()?.at(0);
   const answersPersistentStr = GUIState?.answersPersistent
 
@@ -58,31 +57,44 @@ function AddDefaultNonPersistentAnswers(persistenceID, questions, setGUIStateRea
   });
 }
 
-function AddDefaultPersistentAnswers(persistenceID, questions, setGUIStateReady) {
-
-
-  // Anything in here is fired on component mount.
+async function AddDefaultPersistentAnswers(persistenceID, questions, setGUIStateReady) {
+  // les reponses par defaut des UI de la liste d'UI
   const initialAnswers = extractDataFromQuestions(questions);
-  const GUIState = SqliteReduxGUIState.GetGUIState()[0];
-  let answersPersistentStr = GUIState.answersPersistent
 
-  if (answersPersistentStr?.length > 0) {
-    const answersPersistent = JSON.parse(answersPersistentStr)
 
-    const answerPersistent = answersPersistent[persistenceID]
+  // les reponses des UI de la liste d'UI,
+  // stockees dans la base de donnees GUIAnswers,
+  // si donnees existantes, ou null si pas de donnees dans DB
+  const answersPersistent = SqliteReduxGUIAnswers.GetItemByUniqueID(persistenceID);
 
-    if (!answerPersistent) {
-      answersPersistent[persistenceID] = initialAnswers
+  // si il n'existe aucune donnees pour cette liste d'UI persistante,
+  // alors ajoute les rows par defaut dans la DB
+  if (!answersPersistent) {
+    SqliteReduxGUIAnswers.AddRowToDatabase({
+      row: {
+        answers: JSON.stringify(initialAnswers),
+        uniqueId: persistenceID
+      },
+      onSuccess: (data) => {
+        ShowGUI(setGUIStateReady)
+      },
+      onError: (e) => {
 
-      answersPersistentStr = JSON.stringify(answersPersistent)
-    }
+      }
+    });
+  } else {
+    ShowGUI(setGUIStateReady);
   }
 
+}
+
+function ShowGUI(setGUIStateReady) {
+  // le state du component GetUserInput
+  const GUIState = SqliteReduxGUIState.GetGUIStateFirstRow();
 
   SqliteReduxGUIState.UpdateSpecificRowsFromDB({
     row: {
       ...GUIState,
-      answersPersistent: answersPersistentStr,
       showGUI: Constants.true,
     },
     rowName: "uniqueId",

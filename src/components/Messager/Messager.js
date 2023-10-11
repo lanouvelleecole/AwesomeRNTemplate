@@ -1,8 +1,8 @@
-import {Platform, ToastAndroid, Alert} from 'react-native';
-import {React} from 'react';
-import {Snackbar} from 'react-native-paper';
-import {app_strings} from 'src/stringRepos/AppStrings/AppStrings';
-import {SoundPlayer} from 'src/services/SoundPlayer/SoundPlayer';
+import { Platform, ToastAndroid, Alert } from 'react-native';
+import { React } from 'react';
+import { Snackbar } from 'react-native-paper';
+import { app_strings } from 'src/stringRepos/AppStrings/AppStrings';
+import { SoundPlayer } from 'src/services/SoundPlayer/SoundPlayer';
 
 /* PLOP_INJECT_GLOBAL_CODE */
 /**
@@ -18,6 +18,10 @@ import {SoundPlayer} from 'src/services/SoundPlayer/SoundPlayer';
 const Messager = props => {
   if (props.snackbarVisible) {
     showSnackbar(props.message);
+
+    if (props.onDismiss) {
+      props.onDismiss();
+    }
   }
 
   return;
@@ -45,4 +49,4 @@ function showSnackbar(message) {
   }
 }
 
-export {Messager};
+export { Messager };

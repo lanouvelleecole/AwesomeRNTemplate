@@ -36,8 +36,6 @@ const ChosenOne = ({
     alignSelf: "center",
   };
 
-  // Taille originale de l'item, prend toute la hauteur, centré
-  // eslint-disable-next-line no-unused-vars
   const fullHeightCentered = {
     height: "100%",
     width: dataListItemWidth,

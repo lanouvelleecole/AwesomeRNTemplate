@@ -139,7 +139,7 @@ export const OneByOneFlatListLayout = ({
         // fix
         //windowSize={1}
         // l'index de l'item à montrer en premier
-        initialScrollIndex={importantData.currentIndex}
+        initialScrollIndex={importantData?.currentIndex}
         // des données de taille (length) et place d'item(s) (offset)
         // dans la FlatList
         getItemLayout={getItemLayout}

@@ -32,8 +32,8 @@ export const shouldRefresh1By1 = (previousState, currentState) => {
   console.log(`********************`);
   console.log(
     `re-render in progress.... 
-    prev chosen one index: ${previousState.importantData.currentIndex} 
-    current chosen one index: ${currentState.importantData.currentIndex}
+    prev chosen one index: ${previousState.importantData?.currentIndex} 
+    current chosen one index: ${currentState.importantData?.currentIndex}
     item index = ${currentState.index}.`
   );
 
@@ -43,7 +43,7 @@ export const shouldRefresh1By1 = (previousState, currentState) => {
   // est aussi l'item actuellement visible à l'écran,
   // On refresh
   const itemIsChosenOne =
-    currentState.index == currentState.importantData.currentIndex;
+    currentState.index == currentState.importantData?.currentIndex;
 
   // Si l'item en cours de refresh potentiel,
   // est un PNJ, alors on refresh qu'une seule fois.
@@ -52,10 +52,10 @@ export const shouldRefresh1By1 = (previousState, currentState) => {
     NumberIsBetween({
       number: currentState.index,
       start:
-        currentState.importantData.currentIndex -
+        currentState.importantData?.currentIndex -
         currentState.importantData.howManyNPCSOnEachSide,
       end:
-        currentState.importantData.currentIndex +
+        currentState.importantData?.currentIndex +
         currentState.importantData.howManyNPCSOnEachSide,
     });
 
@@ -68,19 +68,19 @@ export const shouldRefresh1By1 = (previousState, currentState) => {
 
   // Ce PNJ était il le chosen juste avant le dernier re-render ?
   const THIS_NPC_WAS_CHOSEN_BEFORE_THIS_RERENDER =
-    currentState.index == previousState.importantData.currentIndex;
+    currentState.index == previousState.importantData?.currentIndex;
 
   /*
   console.log(`item index = ${currentState.index}.`);
   console.log(
     `First NPC index = ${
-      currentState.importantData.currentIndex -
+      currentState.importantData?.currentIndex -
       currentState.importantData.howManyNPCSOnEachSide
     }.`
   );
   console.log(
     `Last NPC index = ${
-      currentState.importantData.currentIndex +
+      currentState.importantData?.currentIndex +
       currentState.importantData.howManyNPCSOnEachSide
     }.`
   );

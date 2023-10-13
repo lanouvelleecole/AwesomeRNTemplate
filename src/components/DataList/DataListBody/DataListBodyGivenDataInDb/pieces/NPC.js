@@ -23,15 +23,16 @@ const NPC = ({
   item,
   index,
 }) => {
+  const fullHeightCentered = {
+    height: "100%",
+    width: dataListItemWidth,
+    backgroundColor: Constants.defaultBackgroundColor,
+    alignSelf: "center",
+  };
+
   return (
     <View
-      style={{
-        height: dataListItemHeight,
-        width: dataListItemWidth,
-        backgroundColor: Constants.defaultBackgroundColor,
-        justifyContent: "center",
-        //alignItems: "center",
-      }}
+      style={fullHeightCentered}
     >
       {dataListStyle.renderNPCDataListItem({
         item: item,

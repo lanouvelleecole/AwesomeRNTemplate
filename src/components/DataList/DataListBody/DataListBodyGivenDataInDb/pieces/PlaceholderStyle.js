@@ -13,10 +13,12 @@ export function PlaceholderStyle(
   dataListItemWidth,
   backgroundColor
 ) {
-  return {
-    height: dataListItemHeight,
+  const fullHeightCentered = {
+    height: "100%",
     width: dataListItemWidth,
-    backgroundColor: backgroundColor ?? Constants.defaultBackgroundColor,
-    justifyContent: "center",
+    backgroundColor: backgroundColor,
+    alignSelf: "center",
   };
+
+  return fullHeightCentered;
 }

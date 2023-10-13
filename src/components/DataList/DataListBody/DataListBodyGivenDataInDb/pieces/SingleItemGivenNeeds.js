@@ -53,7 +53,7 @@ const SingleItemGivenNeeds = ({
     itemIsEmptyPlaceholder({
       dataListStyle,
       index,
-      chosenOneIndex: importantData.currentIndex,
+      chosenOneIndex: importantData?.currentIndex,
     })
   ) {
     return (
@@ -72,7 +72,7 @@ const SingleItemGivenNeeds = ({
     NPCSAreNeededHere({
       dataListStyle,
       index,
-      chosenOneIndex: importantData.currentIndex,
+      chosenOneIndex: importantData?.currentIndex,
     })
   ) {
     return (

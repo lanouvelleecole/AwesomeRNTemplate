@@ -135,7 +135,7 @@ const MessageAvecLayout = ({
   onComponentLifeAndDeath();
 
   // debout ou couché ?
-  const orientation = GetOrientation();
+  const orientation = GetOrientation({});
 
   if (componentFirst === false) {
     return (

@@ -1,3 +1,4 @@
+import { SetPageState } from "src/pages/Toolbox/pieces/NavHelpers/SetPageState.js";
 import { app_strings } from "../../../../../../../../stringRepos/AppStrings/AppStrings.js";
 
 /* PLOP_INJECT_IMPORT */
@@ -5,6 +6,10 @@ import { DatabaseObjects } from 'src/reduxState/DatabaseObjects';
 import { RestoreLocalDatabasesFromCloud } from 'src/services/LocalDatabase/RestoreLocalDatabasesFromCloud';
 import { SaveLocalDatabasesToCloud } from 'src/services/LocalDatabase/SaveLocalDatabasesToCloud';
 import { ShowNotification } from 'src/services/ShowNotification/ShowNotification';
+import { SqliteReduxToolboxState } from "src/reduxState/ToolboxState/ToolboxStateGetterSetter";
+import { GoogleLogin, GoogleLogout, IsSomeUserLoggedIn } from "src/services/GoogleLogin/GoogleLogin.js";
+import { showSnackbar } from "src/components/Messager/Messager.js";
+
 
 /* PLOP_INJECT_GLOBAL_CODE */
 
@@ -14,15 +19,23 @@ export const GetToolboxChoiceChoices = () => {
     /* PLOP_INJECT_CHOICE */
     SaveDBCloud: 0,
     BackupDBCloud: 1,
+    AddAPIKey: 2,
+    LoginLogout: 3
   };
 };
 
 /* Les différents strings à afficher pour UI, selon choix */
 export const GetToolboxChoiceChoicesUI = () => {
+  const userData = IsSomeUserLoggedIn();
+  const logoutStr = `${app_strings.t('Logout')}
+${userData?.username}`
+
   return {
     /* PLOP_INJECT_CHOICE_UI */
+    AddAPIKey: app_strings.t('AddAPIKey'),
     SaveDBCloud: app_strings.t('SaveDBCloud'),
     BackupDBCloud: app_strings.t('BackupDBCloud'),
+    LoginLogout: userData ? logoutStr : app_strings.t('Login'),
   };
 };
 
@@ -92,5 +105,37 @@ export const GetToolboxChoiceChoicesActions = {
       }
     });
 
+  },
+  AddAPIKey: async ({ choice, answers, answer, answerIndex, currentItem }) => {
+    // getter, contient le state actuel
+    const ToolboxState =
+      SqliteReduxToolboxState.GetToolboxStateFirstRow();
+
+    // setter de state de page, en entier
+    SetPageState({
+      // le state existant.... agrémenté de ....
+      ...ToolboxState,
+
+      // l'écran actuellement affiché dans Toolbox.js
+      chosenOne: "AddAPIKeySubpage",
+
+    });
+  },
+  LoginLogout: async ({ choice, answers, answer, answerIndex, currentItem }) => {
+    const userData = IsSomeUserLoggedIn();
+
+    if (userData) {
+      GoogleLogout({
+        onSuccess: (data) => {
+          showSnackbar('Logout successful !')
+        }
+      });
+    } else {
+      GoogleLogin({
+        onSuccess: (data) => {
+          showSnackbar('Login successful !')
+        }
+      });
+    }
   },
 };

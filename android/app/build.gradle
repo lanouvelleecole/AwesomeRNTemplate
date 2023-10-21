@@ -95,9 +95,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.maslow"
+    namespace "com.arduinogpt"
     defaultConfig {
-        applicationId "com.maslow"
+        applicationId "com.arduinogpt"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

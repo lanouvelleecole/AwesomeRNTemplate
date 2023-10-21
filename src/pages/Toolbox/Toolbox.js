@@ -1,45 +1,48 @@
-import {PlayerGTAInstance} from 'src/constants/PlayerGTA/PlayerGTA';
+import { PlayerGTAInstance } from 'src/constants/PlayerGTA/PlayerGTA';
 /* PLOP_INJECT_IMPORT */
-import {ToolboxChoices} from './pieces/ToolboxChoices/ToolboxChoices.js';
-import {SqliteReduxToolboxState} from 'src/reduxState/ToolboxState/ToolboxStateGetterSetter';
+import {
+  AddAPIKeySubpage
+} from './pieces/AddAPIKeySubpage/AddAPIKeySubpage.js';
+import { ToolboxChoices } from './pieces/ToolboxChoices/ToolboxChoices.js';
+import { SqliteReduxToolboxState } from 'src/reduxState/ToolboxState/ToolboxStateGetterSetter';
 
 // permet du state local
-import {React} from 'react';
+import { React } from 'react';
 
 // des blocs de base
-import {StatusBar} from 'react-native';
+import { StatusBar } from 'react-native';
 
 // styles de base
-import {styles} from './Toolbox.style.js';
+import { styles } from './Toolbox.style.js';
 
 // permet affichage correct sur l'écran
-import {SafeAreaView} from 'react-native-safe-area-context';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 // constantes globales
-import {Constants} from 'src/constants/Constants.js';
+import { Constants } from 'src/constants/Constants.js';
 
 // permet lifecycle
-import {OnComponentLifeAndDeath} from './pieces/OnComponentLifeAndDeath/OnComponentLifeAndDeath';
+import { OnComponentLifeAndDeath } from './pieces/OnComponentLifeAndDeath/OnComponentLifeAndDeath';
 
 // écran d'ajout d'item
-import {AddItemToToolbox} from './pieces/AddItemToToolbox/AddItemToToolbox';
+import { AddItemToToolbox } from './pieces/AddItemToToolbox/AddItemToToolbox';
 
 // écran de modif d'item
-import {EditItemInToolbox} from './pieces/EditItemInToolbox/EditItemInToolbox';
+import { EditItemInToolbox } from './pieces/EditItemInToolbox/EditItemInToolbox';
 
 // la liste d'item ou un message, si liste vide
-import {ToolboxListOrMsg} from './pieces/ToolboxListOrMsg/ToolboxListOrMsg';
+import { ToolboxListOrMsg } from './pieces/ToolboxListOrMsg/ToolboxListOrMsg';
 
 // gère les appui sur bouton back du phone.
-import {OnDeviceBackPressed} from './pieces/OnDeviceBackPressed/OnDeviceBackPressed';
+import { OnDeviceBackPressed } from './pieces/OnDeviceBackPressed/OnDeviceBackPressed';
 
 // permet message SnackBar
-import {Messager} from 'src/components/Messager/Messager';
+import { Messager } from 'src/components/Messager/Messager';
 
 // un tourneur
-import {Spinner} from 'src/components/Spinner/Spinner.js';
-import {Wait} from './pieces/Wait/Wait.js';
-import {HideSnackbar} from './pieces/NavHelpers/HideSnackbar.js';
+import { Spinner } from 'src/components/Spinner/Spinner.js';
+import { Wait } from './pieces/Wait/Wait.js';
+import { HideSnackbar } from './pieces/NavHelpers/HideSnackbar.js';
 
 /**
  *
@@ -111,7 +114,7 @@ SetCurrentIndex(newIndex); OK
  *
  * @returns l'écran de tutos
  */
-const Toolbox = ({route, navigation}) => {
+const Toolbox = ({ route, navigation }) => {
   /* PLOP_INJECT_CODE */
 
   // le state de la page
@@ -162,6 +165,8 @@ const Toolbox = ({route, navigation}) => {
 
       {/* PLOP_INJECT_SUBPAGE */}
 
+      <AddAPIKeySubpage />
+
       <ToolboxChoices />
 
       {/* la liste des items crées par l'user, ou un message invitant à créer un item. */}
@@ -190,4 +195,4 @@ const Toolbox = ({route, navigation}) => {
   );
 };
 
-export {Toolbox};
+export { Toolbox };

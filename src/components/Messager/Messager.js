@@ -41,7 +41,7 @@ const Messager = props => {
   );*/
 };
 
-function showSnackbar(message) {
+export function showSnackbar(message) {
   if (Platform.OS === 'android') {
     ToastAndroid.show(message, ToastAndroid.SHORT);
   } else if (Platform.OS === 'ios') {

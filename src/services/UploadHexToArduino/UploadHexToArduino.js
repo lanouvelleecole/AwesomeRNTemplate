@@ -20,11 +20,32 @@ export async function UploadHexToArduino(hexString) {
         const currentPlatform = Platform.OS;
 
         if (currentPlatform == 'android') {
-            await Linking.openURL(`maslow://arduinogpt.com?hex_str=${hexString}`);
+            const arduinoGPTHexIntent = `maslow://arduinogpt.com?hex_str=${hexString}`;
+            const arduinoGPTHexInstall = `https://play.google.com/store/apps/details?id=com.arduinogpt`;
+
+            await Linking.openURL(arduinoGPTHexIntent);
+
+            /*
+            if (await Linking.canOpenURL(arduinoGPTHexIntent)) {
+                console.log(`ArduinoGPTHex is currently installed on your Android device, let's start this app !`);
+
+                await Linking.openURL(arduinoGPTHexIntent);
+            } else {
+                console.log(`ArduinoGPTHex is not currently installed on your Android device, let's go to the installation page !`);
+
+                await Linking.openURL(arduinoGPTHexInstall);
+
+            }
+            */
 
             return true;
         } else {
-            console.error('The UploadHexToArduino function is available on Android only ;-)');
+            console.log(`IOS devices don't like USB stuff.... In order to install your program, use the ArduinoGPTHex app available on Android (Windows/Linux/MacOS versions of ArduinoGPTHex coming soon) !`);
+
+            // `https://npmjs.com/package/arduino-gpt-hex`
+            await Linking.openURL("https://play.google.com/store/apps/details?id=com.arduinogpt");
+
+            return true;
         }
 
     } catch (error) {

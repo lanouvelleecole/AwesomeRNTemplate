@@ -21,12 +21,16 @@ export function confirmButton({ props, questions, setQuestions }) {
 
       // vérifie que les réponses fournies répondent aux cahier de charges
       const answersChecks = questions.map((question) => {
-        return question.checkInput({
+        const valid = question.checkInput({
           input: answers[question.name]?.value,
           answers,
           answer: answers[question.name],
           answerIndex: currentIndex,
         });
+
+        //console.log(`is ${JSON.stringify(answers[question.name], null, 2)} valid ?: ${valid}`)
+
+        return valid;
       });
 
       // si y'a erreur quelque part, ceci sera égal à 0 ou +

@@ -1,5 +1,6 @@
 
 const strings_en = {
+
   "x0qpHyto": `The cloud data restore failed ! Try again, soldier !`,
   "xSpTMl1n": `Your data is now locally restored, from the cloud !`,
   "xAmgHBho": `The cloud save failed ! Try again, soldier !`,

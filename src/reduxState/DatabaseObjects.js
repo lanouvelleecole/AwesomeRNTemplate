@@ -9,7 +9,7 @@ import { SqliteReduxToolboxState } from './ToolboxState/ToolboxStateGetterSetter
 
 export const DatabaseObjects = [
   /* PLOP_INJECT_SQLITE_REDUX_OBJ */
-		SqliteReduxGUIAnswers,
+  SqliteReduxGUIAnswers,
   SqliteReduxTestPageState,
   SqliteReduxTestPage,
   SqliteReduxAppState,

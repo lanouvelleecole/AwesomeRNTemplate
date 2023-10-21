@@ -1,12 +1,12 @@
 /* PLOP_INJECT_IMPORT */
-import {GetOrientation} from 'src/services/GetOrientation/GetOrientation';
-import {React, useEffect} from 'react';
-import {Text, View, Image, ScrollView, StatusBar} from 'react-native';
-import {styles} from './MessageAvecBoutonLayout.style.js';
-import {CustomButton} from 'src/components/CustomButton/CustomButton';
-import {RunIfPossible} from 'src/services/RunIfPossible/RunIfPossible.js';
-import {SoundPlayer} from 'src/services/SoundPlayer/SoundPlayer.js';
-import {Constants} from 'src/constants/Constants.js';
+import { GetOrientation } from 'src/services/GetOrientation/GetOrientation';
+import { React, useEffect } from 'react';
+import { Text, View, Image, ScrollView, StatusBar } from 'react-native';
+import { styles } from './MessageAvecBoutonLayout.style.js';
+import { CustomButton } from 'src/components/CustomButton/CustomButton';
+import { RunIfPossible } from 'src/services/RunIfPossible/RunIfPossible.js';
+import { SoundPlayer } from 'src/services/SoundPlayer/SoundPlayer.js';
+import { Constants } from 'src/constants/Constants.js';
 
 /**
  *
@@ -39,12 +39,12 @@ const MessageAvecBoutonLayout = ({
   onComponentLifeAndDeath();
 
   // debout ou couché ?
-  const orientation = GetOrientation();
+  const orientation = GetOrientation({});
 
   const type_icon = typeof iconPath;
 
   if (type_icon == 'string') {
-    iconPath = {uri: iconPath};
+    iconPath = { uri: iconPath };
   }
 
   return (
@@ -65,14 +65,14 @@ const MessageAvecBoutonLayout = ({
       <View style={styles.evenContainerStyle}>
         <Image
           source={iconPath}
-          style={[styles.logoStyle, {width: iconWidth, height: iconHeight}]}
+          style={[styles.logoStyle, { width: iconWidth, height: iconHeight }]}
         />
       </View>
 
       {/*le texte */}
       <View style={styles.evenContainerStyle}>
         <ScrollView
-          contentContainerStyle={{flexGrow: 1, justifyContent: 'center'}}>
+          contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
           <Text
             style={[
               styles.blackText,
@@ -102,12 +102,12 @@ const MessageAvecBoutonLayout = ({
           ]}
           buttonTextStyle={[
             styles.buttonTextStyle,
-            {color: buttonTextColor, fontFamily: buttonTextFont},
+            { color: buttonTextColor, fontFamily: buttonTextFont },
           ]}
           onClick={() => {
-            SoundPlayer({sound: clickSound});
+            SoundPlayer({ sound: clickSound });
 
-            RunIfPossible({func: onButtonClicked});
+            RunIfPossible({ func: onButtonClicked });
           }}
           buttonLogoName={buttonLogoName}
           buttonLogoSize={buttonLogoSize}
@@ -139,4 +139,4 @@ const onComponentLifeAndDeath = () => {
   }, []);
 };
 
-export {MessageAvecBoutonLayout};
+export { MessageAvecBoutonLayout };

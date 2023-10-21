@@ -34,7 +34,7 @@ export function MsgAvecTxtInputNumKeyboard(props) {
             multiline={true}
             numberOfLines={3}
             placeholderTextColor={props.bodyContentColor}
-            value={input}
+            value={input?.toString()}
             style={[
               styles.textInput,
               {
@@ -44,7 +44,7 @@ export function MsgAvecTxtInputNumKeyboard(props) {
               },
             ]}
             onChangeText={text => {
-              const numValue = Number(text);
+              const numValue = text?.length > 0 ? Number(text) : null;
 
               setInput(numValue);
 

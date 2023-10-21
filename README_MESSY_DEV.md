@@ -1,4 +1,4 @@
-# Maslow (Une Appli Android/iOS React Native)
+# arduinogpt (Une Appli Android/iOS React Native)
 
 # La recette de préparation du template:
 
@@ -99,13 +99,13 @@ ou
 
 ## C'est quoi ce repo ?
 
-Maslow est une appli react native (un template/canvas pour toi)
-qui permet de t'aider à créer l'appli de tes rêves, avec l'aide de MaslowGPT,
+arduinogpt est une appli react native (un template/canvas pour toi)
+qui permet de t'aider à créer l'appli de tes rêves, avec l'aide de arduinogptGPT,
 le magicien savant fou.
 
-Pour utiliser le méchanisme de création de template (MaslowGPT), et aussi créer l'application,
+Pour utiliser le méchanisme de création de template (arduinogptGPT), et aussi créer l'application,
 il faut faire plein de trucs (explication masterclass)
-Ci dessous on va décrire tout ce qu'il faut pour lancer l'écosystème Maslow/l'appli.
+Ci dessous on va décrire tout ce qu'il faut pour lancer l'écosystème arduinogpt/l'appli.
 
 Exécute les commandes suivante, à la racine de l'application,
 pour installer les dépendences:
@@ -280,7 +280,7 @@ buildscript {
 
 pour éviter une erreur de style 'The Android Gradle plugin supports only kotlin-android-extensions Gradle plugin version 1.6.20 and higher.'
 
-L'écosystème maslow à besoin des dossiers/fichiers suivants, pour générer des templates:
+L'écosystème arduinogpt à besoin des dossiers/fichiers suivants, pour générer des templates:
 
 src/
 assets/
@@ -419,7 +419,7 @@ puis save, enfin clique 'Terminal/Run Task' et sélectionne 'eslint: lint whole 
 ## Pour créer le template par défaut d'appli
 
 ```
-npx maslow add-default-app-template
+npx arduinogpt add-default-app-template
 ```
 
 ## Pour formatter le code on save (VS Code)
@@ -524,7 +524,7 @@ npm run start-genymotion <recipe UUID here> <Recipe Name here> --no-wait
 ```
 
 ```
-npm run start-genymotion 0e4331a6-3f9b-48c3-8108-2d4abe032e0f MaslowPhone --no-wait
+npm run start-genymotion 0e4331a6-3f9b-48c3-8108-2d4abe032e0f arduinogptPhone --no-wait
 ```
 
 Ouvre la fenetre de machine virtuelle.
@@ -571,7 +571,7 @@ https://stackoverflow.com/questions/47239251/install-failed-user-restricted-andr
 
 si erreur du genre:
 
-error Failed to build the app: No package name found. Found errors in C:\Users\Shadow\Desktop\maslow\android\app\src\main\AndroidManifest.xml.
+error Failed to build the app: No package name found. Found errors in C:\Users\Shadow\Desktop\arduinogpt\android\app\src\main\AndroidManifest.xml.
 
 Si tu as des erreurs du style: EOF ou Device offline, durant installation de l'appli via USB,
 alors rends toi dans le menu pour developpeurs, 
@@ -654,7 +654,7 @@ Une fois installée, et setup effectué, alors tu peux set des breakpoints dans 
 
 Donc, REGLE N°1: TOUJOURS UTILISER UN DEBUGGEUR ET DES BREAKPOINTS !!!!!!
 
-Flipper est vraiment un super outil ! J'ai essayé diverses méthodes de débug pour React Native (via VS CODE, React Native Debugger, Chrome DevTools, Reactotron, etc...) Mais malheureusement je n'ai pas pu parvenir à correctement mettre en marche le méchanisme de breakpoints.... Jusqu'a ce que j'entende parler de Flipper..... et bingo ! En cas de problème, laisse un commentaire dans la section 'Issues' de ce repo, et moi, ou un membre de la communauté Maslow, se fera un grand plaisir de t'aider.
+Flipper est vraiment un super outil ! J'ai essayé diverses méthodes de débug pour React Native (via VS CODE, React Native Debugger, Chrome DevTools, Reactotron, etc...) Mais malheureusement je n'ai pas pu parvenir à correctement mettre en marche le méchanisme de breakpoints.... Jusqu'a ce que j'entende parler de Flipper..... et bingo ! En cas de problème, laisse un commentaire dans la section 'Issues' de ce repo, et moi, ou un membre de la communauté arduinogpt, se fera un grand plaisir de t'aider.
 
 ## Pour bosser sur une appli React Native, armé de son débugger ;-)
 

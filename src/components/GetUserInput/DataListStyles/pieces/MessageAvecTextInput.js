@@ -37,7 +37,7 @@ export const MsgAvecTextInputTextKeyboard = props => {
           <TextInput
             multiline={true}
             numberOfLines={3}
-            value={input}
+            value={input?.toString()}
             placeholderTextColor={props.bodyContentColor}
             style={[
               styles.textInput,
@@ -50,16 +50,18 @@ export const MsgAvecTextInputTextKeyboard = props => {
             placeholder={app_strings.t('typeHere')} // https://infinitbility.com/how-to-set-keyboard-type-in-react-native
             keyboardType={'email-address'}
             onChangeText={text => {
-              setInput(text);
+              const textOrNull = text?.length > 0 ? text : null;
 
-              RunIfPossible({ func: props.question.onTextChanged, args: text });
+              setInput(textOrNull);
+
+              RunIfPossible({ func: props.question.onTextChanged, args: textOrNull });
 
               storeInputToQuestions({
                 persistenceID: props.persistenceID,
                 question: props.question,
                 questions: props.questions,
                 setQuestions: props.setQuestions,
-                input: text,
+                input: textOrNull,
               });
             }}
           />

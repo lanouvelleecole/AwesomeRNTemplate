@@ -11,6 +11,7 @@ import { SqliteReduxGUIState } from "src/reduxState/GUIState/GUIStateGetterSette
 import { SetCurrentIndex } from "./DataListStyles/pieces/SetCurrentIndex.js";
 import { Spinner } from "../Spinner/Spinner.js";
 import { onComponentLifeAndDeath } from "./onComponentLifeAndDeath";
+import { GetOrientation } from "src/services/GetOrientation/GetOrientation.js";
 
 /**
  * @returns l'écran d'interrogatoire
@@ -57,6 +58,8 @@ const GetUserInput = (props) => {
     setQuestions: setQuestions,
     props: props,
   });
+
+
 
   /** les données importantes, déterminant si on refresh, ou pas, l'item */
   const importantData = {

@@ -1,4 +1,5 @@
 /* PLOP_INJECT_IMPORT */
+
 import {
   TestPage
 } from "src/pages/TestPage/TestPage";
@@ -82,6 +83,7 @@ export const AppMainComponent = ({ onLayoutRootView, appState }) => {
                 headerShown: false,
               }}>
               {/* PLOP_INJECT_PAGES_PARAMS */}
+
               <Stack.Screen
                 name="TestPage"
                 component={

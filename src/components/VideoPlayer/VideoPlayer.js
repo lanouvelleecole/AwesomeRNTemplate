@@ -35,7 +35,7 @@ const VideoPlayer = (props) => {
 
   // quelle orientation à l'écran ?
   // ("PORTRAIT" ou "LANDSCAPE")
-  //const currentOrientation = GetOrientation();
+  //const currentOrientation = GetOrientation({});
 
   // une chose permettant
   // play/pause/resume/stop/seek, etc...

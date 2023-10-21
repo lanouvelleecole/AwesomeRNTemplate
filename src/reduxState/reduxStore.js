@@ -12,7 +12,7 @@ import { configureStore } from "@reduxjs/toolkit";
 const store = configureStore({
   reducer: {
     /* PLOP_INJECT_REDUX_REDUCER */
-		GUIAnswers: GUIAnswersReducer,
+    GUIAnswers: GUIAnswersReducer,
     TestPageState: TestPageStateReducer,
     TestPage: TestPageReducer,
     AppState: AppStateReducer,

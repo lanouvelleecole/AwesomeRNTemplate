@@ -13,7 +13,14 @@ import auth from '@react-native-firebase/auth';
  * @param {*} onError
  * @param {*} onCancel
  * 
- * @returns un objet { accessToken: '<google access token>', idToken: '<google id token>', firebase_uid: '<firebase user id>' }
+ * @returns un objet { 
+ * accessToken, 
+ * idToken, 
+ * firebase_uid, 
+ * email, 
+ * username, 
+ * username_photo 
+ * }
  *
  * Cette fonction permet de se connecter à Google et a Firebase/Firestore
  *
@@ -49,10 +56,13 @@ const GoogleLogin = async ({ onSuccess, onError, onCancel }) => {
 
 
     const firebase_uid = firebase_signin.user.uid;
+    const email = firebase_signin.user.email;
+    const username = firebase_signin.user.displayName;
+    const username_photo = firebase_signin.user.photoURL;
 
 
 
-    const login_data = { accessToken, idToken, firebase_uid };
+    const login_data = { accessToken, idToken, firebase_uid, email, username, username_photo };
 
 
 
@@ -115,5 +125,20 @@ const GoogleLogout = async ({ onSuccess, onError }) => {
   }
 };
 
+const IsSomeUserLoggedIn = () => {
+  const user = auth().currentUser; // Assuming you have Firebase Authentication initialized
 
-export { GoogleLogin, GoogleLogout };
+  if (user) {
+    return {
+      username: user.displayName,
+      profilePic: user.photoURL,
+    };
+  } else {
+    return null;
+  }
+};
+
+
+
+
+export { GoogleLogin, GoogleLogout, IsSomeUserLoggedIn };

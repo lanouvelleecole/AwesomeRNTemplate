@@ -13,6 +13,19 @@ const AppStrings = () => {
   const i18n = new I18n({
     src: {
       /* PLOP_INJECT_SRC_STRING */
+      Login: "Login (Google)",
+      Logout: "Logout (Google)",
+
+      xJ9h8fL1: "set checkInput to true",
+      xOlvmwdF: "Oops... Try again",
+
+      xpz3vNzy: "Scanner",
+
+      xlEu9A5o: "This API key is not valid. Please enter a valid API key.",
+
+      xbfB9hke: "API Key",
+
+      AddAPIKey: "Add an API key, buddy",
       "x0qpHyto": `The cloud data restore failed ! Try again, soldier !`,
       "xSpTMl1n": `Your data is now locally restored, from the cloud !`,
       "xAmgHBho": `The cloud save failed ! Try again, soldier !`,
@@ -52,7 +65,9 @@ const AppStrings = () => {
       "GetToolboxChoice": "What tool do you want to create?",
       "WrongTool": "This tool is crap",
       "SaveDBCloud": "Save your user data in the cloud",
-      "BackupDBCloud": "Recover your user data, stored in the cloud"
+      "BackupDBCloud": "Recover your user data, stored in the cloud",
+
+
       /* PLOP_INJECT_SRC_END */
     },
     /* PLOP_INJECT_INTL_STRINGS */

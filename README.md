@@ -1,4 +1,4 @@
-# <YOUR_APP_NAME> (A beautiful & humble React Native app template)
+# <YOUR_APP_NAME> (A simple & humble React Native app template)
 
 ## Create a React Native app using the npx <MAS> create-react-native-app command
 
@@ -106,10 +106,10 @@ export async function FetchGoogleSignIn() {
 
 Then download the google-services.json file, and add it in the android/app folder.
 
-Finally, run this command to install/develop/debug your app (on a physical Android device)
+Finally, plug your Android device via USB, then run this command to install/develop/debug your app (on a physical Android device)
 
 ```
-npm run start-debug-android
+npm run android
 ```
 
 The first time you run this command, it will fail, and a notification will appear on your Android device, asking you to allow your computer, say yes, and toggle the 'remember' choice.

@@ -23,7 +23,7 @@ const isPortrait = () => {
  * A React Hook which updates when the orientation changes
  * @returns whether the user is in 'PORTRAIT' or 'LANDSCAPE'
  */
-const GetOrientation = () => {
+const GetOrientation = ({ onOrientationChanged }) => {
   // State to hold the connection status
   const [orientation, setOrientation] = useState(
     // l'orientation actuelle est stockée comme valeur de départ du state, AKA orientation
@@ -35,8 +35,13 @@ const GetOrientation = () => {
   useEffect(() => {
     // le callback qui rafraichira l'UI
     // quand l'orientation changera
-    const callback = () =>
-      setOrientation(isPortrait() ? "PORTRAIT" : "LANDSCAPE");
+    const callback = () => {
+      const newOrientation = isPortrait() ? "PORTRAIT" : "LANDSCAPE";
+
+      setOrientation(newOrientation);
+
+      onOrientationChanged && onOrientationChanged(newOrientation);
+    }
 
     // lance le listener d'orientation.
     // retourne de quoi pouvoir arreter le lister si besoin

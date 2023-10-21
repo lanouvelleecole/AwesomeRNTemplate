@@ -1,7 +1,7 @@
 import { ShowNotification } from "src/services/ShowNotification/ShowNotification";
-import MaslowUtils from "maslowutils";
 import { GoogleLogin } from "src/services/GoogleLogin/GoogleLogin";
 import { showSnackbar } from "src/components/Messager/Messager";
+//import MaslowSDK from "maslow-gpt-sdk";
 
 /**
  * 
@@ -15,11 +15,10 @@ export function OnButtonClicked({ setSubscribeUrl, setShowUI }) {
     // to set the iframe url, and UI visibility respectively
     // feel free to add more args if needed
 
-
+    /*
     GoogleLogin({
         onSuccess: async (login_data) => {
-
-            MaslowUtils.GetAPISubscriptionLink({
+            MaslowSDK.GetAPISubscriptionLink({
                 params: login_data,
                 onSuccess: (url_data) => {
                     ShowNotification({
@@ -52,4 +51,5 @@ export function OnButtonClicked({ setSubscribeUrl, setShowUI }) {
             showSnackbar('Operation canceled')
         },
     });
+    */
 }

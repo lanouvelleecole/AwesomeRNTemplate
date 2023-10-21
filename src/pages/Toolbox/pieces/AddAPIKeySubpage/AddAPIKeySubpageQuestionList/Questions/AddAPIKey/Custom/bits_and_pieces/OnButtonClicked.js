@@ -23,7 +23,7 @@ export function OnButtonClicked({ setSubscribeUrl, setShowUI }) {
                 onSuccess: (url_data) => {
                     ShowNotification({
                         id: 0,
-                        title: "Maslow",
+                        title: "ArduinoGPT",
                         body: "Let's go to the subscription page !",
                         extra: null,
                     });
@@ -35,7 +35,7 @@ export function OnButtonClicked({ setSubscribeUrl, setShowUI }) {
                 onError: (e) => {
                     ShowNotification({
                         id: 0,
-                        title: "Maslow",
+                        title: "ArduinoGPT",
                         body: "We couldn't generate a subscription link for you.... Try again, soldier !",
                         extra: null,
                     });

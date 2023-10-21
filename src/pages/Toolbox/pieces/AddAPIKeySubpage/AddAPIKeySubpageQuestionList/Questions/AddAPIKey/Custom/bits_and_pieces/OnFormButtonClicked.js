@@ -15,7 +15,7 @@ export function OnFormButtonClicked({ text, onInput }) {
 
     ShowNotification({
         id: 0,
-        title: "Maslow",
+        title: "ArduinoGPT",
         body: `Clé API fournie avec succès !: ${text}`,
         extra: null,
     });

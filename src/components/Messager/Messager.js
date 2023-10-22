@@ -1,8 +1,5 @@
 import { Platform, ToastAndroid, Alert } from 'react-native';
-import { React } from 'react';
-import { Snackbar } from 'react-native-paper';
-import { app_strings } from 'src/stringRepos/AppStrings/AppStrings';
-import { SoundPlayer } from 'src/services/SoundPlayer/SoundPlayer';
+import { Delay } from 'src/services/Delay/Delay';
 
 /* PLOP_INJECT_GLOBAL_CODE */
 /**
@@ -20,25 +17,16 @@ const Messager = props => {
     showSnackbar(props.message);
 
     if (props.onDismiss) {
-      props.onDismiss();
+      (async function () {
+        await Delay(750);
+
+        props.onDismiss();
+      })();
+
     }
   }
 
   return;
-  /*return (
-    <Snackbar
-      style={{zIndex: 42}}
-      visible={props.snackbarVisible}
-      onDismiss={props.onDismiss}
-      action={{
-        label: app_strings.t('OK'),
-        onPress: () => {
-          SoundPlayer({sound: props.clickSound});
-        },
-      }}>
-      {props.message}
-    </Snackbar>
-  );*/
 };
 
 export function showSnackbar(message) {

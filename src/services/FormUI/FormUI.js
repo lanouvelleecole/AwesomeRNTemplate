@@ -5,12 +5,18 @@
 
 // First, let's import all necessary components from react, and react native.
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { CustomButton } from 'src/components/CustomButton/CustomButton';
-import { ShowNotification } from '../ShowNotification/ShowNotification';
 import { Constants } from 'src/constants/Constants';
 import { TextInputWithButtons } from './TextInputWithButtons';
+import { showSnackbar } from 'src/components/Messager/Messager';
 
+export const PageState = {
+  NoData: 0,
+  DataLoading: 1,
+  DataLoadingFailed: 2,
+  DataLoaded: 3
+};
 
 export function FormUI({
   UI,
@@ -43,15 +49,31 @@ export function FormUI({
         initialFormInput={formInput}
         validateBtnIcon={otherButtons[0].buttonIconName}
         onValidate={(text) => {
-          setFormInput(text);
-          otherButtons[0].onButtonClicked(text);
+          const pageState = UIState.PageState;
+          const workIsGoingOn = pageState == PageState.DataLoading;
+
+          if (!workIsGoingOn) {
+            setFormInput(text);
+            otherButtons[0].onButtonClicked(text);
+          } else {
+            showSnackbar("Some work is already going on, brother !");
+          }
         }}
       />}
       <View style={{ flexDirection: 'row' }}>
 
         {!showForm && otherButtons.map((btn) => <CustomButton
           key={btn.buttonIconName}
-          onClick={btn.onButtonClicked}
+          onClick={() => {
+            const pageState = UIState.PageState;
+            const workIsGoingOn = pageState == PageState.DataLoading;
+
+            if (!workIsGoingOn) {
+              btn.onButtonClicked();
+            } else {
+              showSnackbar("Some work is already going on, brother !");
+            }
+          }}
           buttonLogoName={btn.buttonIconName}
           buttonContainerStyle={styles.input}
           isVisible={true}

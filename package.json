@@ -19,7 +19,9 @@
     "start-debug-android": "(npm run adb-connect && npm run android) || exit 0",
     "start-debug-ios": "(npm run adb-connect && npm run ios) || exit 0",
     "clean-app": "cd android && gradlew clean && cd ..",
-    "get-sha-keys": "cd android && gradlew signingReport && cd .."
+    "del-sha-keys": "keytool -delete -v -alias androiddebugkey -keystore android/app/debug.keystore -storepass android",
+    "gen-sha-keys": "keytool -genkey -v -keystore android/app/debug.keystore -alias androiddebugkey -storepass android -keypass android -keyalg RSA -validity 14000",
+    "get-sha-keys": "keytool -list -v -keystore android/app/debug.keystore -alias androiddebugkey -storepass android"
   },
   "dependencies": {
     "@notifee/react-native": "^7.8.0",

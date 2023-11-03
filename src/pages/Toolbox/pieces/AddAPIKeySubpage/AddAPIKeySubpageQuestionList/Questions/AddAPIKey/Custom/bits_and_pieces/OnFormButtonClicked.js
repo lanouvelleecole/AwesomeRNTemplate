@@ -1,5 +1,6 @@
 import { ShowNotification } from "src/services/ShowNotification/ShowNotification";
 import { SaveAPIKeyInAppState } from "./SaveAPIKeyInAppState";
+import { app_strings } from "src/stringRepos/AppStrings/AppStrings";
 
 /**
  * 
@@ -15,8 +16,8 @@ export function OnFormButtonClicked({ text, onInput }) {
 
     ShowNotification({
         id: 0,
-        title: "ArduinoGPT",
-        body: `Clé API fournie avec succès !: ${text}`,
+        title: "arduinogpt",
+        body: app_strings.t("APIKeySuccess") + `: ` + text,
         extra: null,
     });
 

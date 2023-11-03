@@ -1,7 +1,9 @@
 import { ShowNotification } from "src/services/ShowNotification/ShowNotification";
 import { GoogleLogin } from "src/services/GoogleLogin/GoogleLogin";
 import { showSnackbar } from "src/components/Messager/Messager";
-//import MaslowSDK from "maslow-gpt-sdk";
+import { app_strings } from "src/stringRepos/AppStrings/AppStrings";
+
+//import YourOwnSDK from "your-own-sdk";
 
 /**
  * 
@@ -9,7 +11,7 @@ import { showSnackbar } from "src/components/Messager/Messager";
  * 
  * this callback gets called when the button under the form is pressed 
  */
-export function OnButtonClicked({ setSubscribeUrl, setShowUI }) {
+export function OnBuy5KAPICreditsButtonClicked({ setSubscribeUrl, setShowUI }) {
     // do whatever you want here. You can erase the shit below, it's just example code.
     // you can use the setSubscribeUrl and setShowUI setters (or other names if u renamed it earlier)
     // to set the iframe url, and UI visibility respectively
@@ -18,13 +20,13 @@ export function OnButtonClicked({ setSubscribeUrl, setShowUI }) {
     /*
     GoogleLogin({
         onSuccess: async (login_data) => {
-            MaslowSDK.GetAPISubscriptionLink({
+            YourOwnSDK.Buy5KAPICreditsLink({
                 params: login_data,
                 onSuccess: (url_data) => {
                     ShowNotification({
                         id: 0,
-                        title: "ArduinoGPT",
-                        body: "Let's go to the subscription page !",
+                        title: "arduinogpt",
+                        body: app_strings.t("LetsBuyAPICredits"),
                         extra: null,
                     });
 
@@ -35,8 +37,8 @@ export function OnButtonClicked({ setSubscribeUrl, setShowUI }) {
                 onError: (e) => {
                     ShowNotification({
                         id: 0,
-                        title: "ArduinoGPT",
-                        body: "We couldn't generate a subscription link for you.... Try again, soldier !",
+                        title: "arduinogpt",
+                        body: app_strings.t("APICreditsError"),
                         extra: null,
                     });
                 },

@@ -13,6 +13,16 @@ const AppStrings = () => {
   const i18n = new I18n({
     src: {
       /* PLOP_INJECT_SRC_STRING */
+      APIKeySuccess: `API Key given successfully !`,
+      APICreditsError: "We couldn't generate a API Credits checkout link for you.... Try again, soldier !",
+      LetsBuyAPICredits: "Let's go to the API Credits checkout page !",
+      APISubError: "We couldn't generate a API subscription link for you.... Try again, soldier !",
+      LetsAPISub: "Let's go to the API subscription page !",
+      asyncWorkSuccess: "The asynchronous work completed successfully ;-)",
+      asyncWorkStarted: "The asynchronous work just started ;-)",
+
+
+
       Login: "Login (Google)",
       Logout: "Logout (Google)",
 

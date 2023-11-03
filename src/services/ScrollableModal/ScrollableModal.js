@@ -8,8 +8,17 @@ import { Modal, View, Text, TextInput, ScrollView, TouchableOpacity } from 'reac
  * 
  * @param {*} inputs, a list of objects {
  *    title: the title of the input,
+ * 
  *    id: a unique identifier,
- *    type: one of: 'textinput_text', 'textinput_number', 'choice_list'
+ * 
+ *    type: one of: 
+ * 'textinput_text', 
+ * 'textinput_number', 
+ * 'choice_list',
+ * 'clickable_choice'
+ * 
+ *    onClick: a callback to call when the clickable choice is clicked
+ * 
  *    choices: a list of objects {
  *      title: the title of the choice,
  *      value: the actual value of the choice,
@@ -29,6 +38,7 @@ import { Modal, View, Text, TextInput, ScrollView, TouchableOpacity } from 'reac
 const ScrollableModal = ({
   inputs,
   onSubmit,
+  onCancel,
   modalVisible = true,
   showModalButton = true,
   fontFamily = 'Arial', // Default font family is Arial
@@ -51,6 +61,7 @@ const ScrollableModal = ({
   const handleSubmit = () => {
     setIsVisible(false);
     onSubmit && onSubmit(answers);
+    onCancel && onCancel();
   };
 
   // Handle input field value change
@@ -87,7 +98,7 @@ const ScrollableModal = ({
               inputs.map(input => (
                 <View key={input.id}>
                   {/* Render the title of the input field */}
-                  <Text style={{ fontFamily }}>{input.title}</Text>
+                  <Text style={{ fontFamily, marginTop: 20 }}>{input.title}</Text>
                   {/* Render input fields based on input type */}
                   {
                     input.type === 'textinput_text' && (
@@ -125,6 +136,16 @@ const ScrollableModal = ({
                       </Picker>
                     )
                   }
+                  {
+                    input.type === 'clickable_choice' && (
+                      <TouchableOpacity
+                        style={[styles.submitButton, { fontFamily }]}
+                        onPress={input.onClick}
+                      >
+                        <Text style={{ color: 'white', fontFamily }}>{input.title}</Text>
+                      </TouchableOpacity>
+                    )
+                  }
                 </View>
               ))
             ) : (
@@ -135,12 +156,12 @@ const ScrollableModal = ({
               </Text>
             )}
             {/* Render the submit button */}
-            <TouchableOpacity
+            {onSubmit && <TouchableOpacity
               style={[styles.submitButton, { fontFamily }]}
               onPress={handleSubmit}
             >
               <Text style={{ color: 'white', fontFamily }}>Submit</Text>
-            </TouchableOpacity>
+            </TouchableOpacity>}
           </View>
         </ScrollView>
       </Modal>

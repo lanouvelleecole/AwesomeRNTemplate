@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     color: "black",
     margin: 15
   },
-  btnStyle: { backgroundColor: "transparent" },
+  btnStyle: { backgroundColor: "transparent", borderColor: "black", borderWidth: 1, padding: 15, borderRadius: 5 },
   btnTxtStyle: {
     color: "black",
     fontFamily: "ComingSoon",

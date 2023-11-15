@@ -3,7 +3,7 @@ import { GoogleLogin } from "src/services/GoogleLogin/GoogleLogin";
 import { showSnackbar } from "src/components/Messager/Messager";
 import { app_strings } from "src/stringRepos/AppStrings/AppStrings";
 
-import MaslowGPTSDK from "maslow-gpt-sdk";
+// import YourOwnSDK from "your-own-sdk";
 
 /**
  * 
@@ -17,10 +17,10 @@ export function OnAPISubscribeButtonClicked({ setSubscribeUrl, setShowUI }) {
     // to set the iframe url, and UI visibility respectively
     // feel free to add more args if needed
 
-    
+    /*
     GoogleLogin({
         onSuccess: async (login_data) => {
-            MaslowGPTSDK.GetAPISubscriptionLink({
+            YourOwnSDK.GetAPISubscriptionLink({
                 params: login_data,
                 onSuccess: (url_data) => {
                     ShowNotification({
@@ -52,5 +52,6 @@ export function OnAPISubscribeButtonClicked({ setSubscribeUrl, setShowUI }) {
         onCancel: () => {
             showSnackbar(app_strings.t("LoginCancel"))
         },
-    });    
+    });
+    */ 
 }

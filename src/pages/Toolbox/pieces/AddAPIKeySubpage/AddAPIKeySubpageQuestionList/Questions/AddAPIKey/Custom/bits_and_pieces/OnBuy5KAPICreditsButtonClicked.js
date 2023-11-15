@@ -4,7 +4,7 @@ import { showSnackbar } from "src/components/Messager/Messager";
 import { app_strings } from "src/stringRepos/AppStrings/AppStrings";
 import { SqliteReduxAppState } from "src/reduxState/AppState/AppStateGetterSetter";
 
-//import YourOwnSDK from "your-own-sdk";
+import MaslowGPTSDK from "maslow-gpt-sdk";
 
 /**
  * 
@@ -21,16 +21,16 @@ export function OnBuy5KAPICreditsButtonClicked({ setSubscribeUrl, setShowUI }) {
     const maslowAPIKey = AppState.maslowAPIKey;
 
 
-    /*
+    
     GoogleLogin({
         onSuccess: async (login_data) => {
-            YourOwnSDK.Buy5KAPICreditsLink({
+            MaslowGPTSDK.Buy5KAPICreditsLink({
                 apiKey: maslowAPIKey,
                 params: login_data,
                 onSuccess: (url_data) => {
                     ShowNotification({
                         id: 0,
-                        title: "arduinogpt",
+                        title: "remindme",
                         body: app_strings.t("LetsBuyAPICredits"),
                         extra: null,
                     });
@@ -42,7 +42,7 @@ export function OnBuy5KAPICreditsButtonClicked({ setSubscribeUrl, setShowUI }) {
                 onError: (e) => {
                     ShowNotification({
                         id: 0,
-                        title: "arduinogpt",
+                        title: "remindme",
                         body: app_strings.t("APICreditsError"),
                         extra: null,
                     });
@@ -52,11 +52,11 @@ export function OnBuy5KAPICreditsButtonClicked({ setSubscribeUrl, setShowUI }) {
 
         },
         onError: (e) => {
-            showSnackbar('There was a problem during the login.')
+            showSnackbar(app_strings.t("LoginError"))
         },
         onCancel: () => {
-            showSnackbar('Operation canceled')
+            showSnackbar(app_strings.t("LoginCancel"))
         },
     });
-    */
+    
 }

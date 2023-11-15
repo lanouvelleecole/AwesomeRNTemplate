@@ -3,7 +3,7 @@ import { GoogleLogin } from "src/services/GoogleLogin/GoogleLogin";
 import { showSnackbar } from "src/components/Messager/Messager";
 import { app_strings } from "src/stringRepos/AppStrings/AppStrings";
 
-//import YourOwnSDK from "your-own-sdk";
+import MaslowGPTSDK from "maslow-gpt-sdk";
 
 /**
  * 
@@ -17,15 +17,15 @@ export function OnAPISubscribeButtonClicked({ setSubscribeUrl, setShowUI }) {
     // to set the iframe url, and UI visibility respectively
     // feel free to add more args if needed
 
-    /*
+    
     GoogleLogin({
         onSuccess: async (login_data) => {
-            YourOwnSDK.GetAPISubscriptionLink({
+            MaslowGPTSDK.GetAPISubscriptionLink({
                 params: login_data,
                 onSuccess: (url_data) => {
                     ShowNotification({
                         id: 0,
-                        title: "arduinogpt",
+                        title: "remindme",
                         body: app_strings.t("LetsAPISub"),
                         extra: null,
                     });
@@ -37,7 +37,7 @@ export function OnAPISubscribeButtonClicked({ setSubscribeUrl, setShowUI }) {
                 onError: (e) => {
                     ShowNotification({
                         id: 0,
-                        title: "arduinogpt",
+                        title: "remindme",
                         body: app_strings.t("APISubError"),
                         extra: null,
                     });
@@ -47,11 +47,10 @@ export function OnAPISubscribeButtonClicked({ setSubscribeUrl, setShowUI }) {
 
         },
         onError: (e) => {
-            showSnackbar('There was a problem during the login.')
+            showSnackbar(app_strings.t("LoginError"))
         },
         onCancel: () => {
-            showSnackbar('Operation canceled')
+            showSnackbar(app_strings.t("LoginCancel"))
         },
-    });
-    */
+    });    
 }

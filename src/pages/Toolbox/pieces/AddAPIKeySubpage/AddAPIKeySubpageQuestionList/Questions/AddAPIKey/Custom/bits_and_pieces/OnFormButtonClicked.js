@@ -16,7 +16,7 @@ export function OnFormButtonClicked({ text, onInput }) {
 
     ShowNotification({
         id: 0,
-        title: "arduinogpt",
+        title: "remindme",
         body: app_strings.t("APIKeySuccess") + `: ` + text,
         extra: null,
     });

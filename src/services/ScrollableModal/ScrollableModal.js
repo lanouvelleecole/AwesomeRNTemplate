@@ -142,7 +142,7 @@ const ScrollableModal = ({
                         style={[styles.submitButton, { fontFamily }]}
                         onPress={input.onClick}
                       >
-                        <Text style={{ color: 'white', fontFamily }}>{input.title}</Text>
+                        <Text style={{ color: 'white', fontFamily }}>{input.buttonText ?? input.title}</Text>
                       </TouchableOpacity>
                     )
                   }

@@ -67,7 +67,7 @@ export const GetToolboxChoiceChoicesActions = {
       onSuccess: (data) => {
         ShowNotification({
           id: 0,
-          title: "ArduinoGPT",
+          title: "remindme",
           body: app_strings.t("xNUgKxo"),
           extra: null,
         });
@@ -75,7 +75,7 @@ export const GetToolboxChoiceChoicesActions = {
       onError: (e) => {
         ShowNotification({
           id: 0,
-          title: "ArduinoGPT",
+          title: "remindme",
           body: app_strings.t('xAmgHBho'),
           extra: null,
         });
@@ -90,7 +90,7 @@ export const GetToolboxChoiceChoicesActions = {
       onSuccess: (data) => {
         ShowNotification({
           id: 0,
-          title: "ArduinoGPT",
+          title: "remindme",
           body: app_strings.t('xSpTMl1n'),
           extra: null,
         });
@@ -98,7 +98,7 @@ export const GetToolboxChoiceChoicesActions = {
       onError: (e) => {
         ShowNotification({
           id: 0,
-          title: "ArduinoGPT",
+          title: "remindme",
           body: app_strings.t('x0qpHyto'),
           extra: null,
         });
@@ -127,13 +127,13 @@ export const GetToolboxChoiceChoicesActions = {
     if (userData) {
       GoogleLogout({
         onSuccess: (data) => {
-          showSnackbar('Logout successful !')
+          showSnackbar('Logout OK !')
         }
       });
     } else {
       GoogleLogin({
         onSuccess: (data) => {
-          showSnackbar('Login successful !')
+          showSnackbar('Login NOT OK !')
         }
       });
     }

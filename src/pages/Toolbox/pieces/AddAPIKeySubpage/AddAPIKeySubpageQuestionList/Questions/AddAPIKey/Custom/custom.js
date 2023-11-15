@@ -9,6 +9,8 @@ import { OnAPISubscribeButtonClicked } from "./bits_and_pieces/OnAPISubscribeBut
 import { ScrollableModal } from "src/services/ScrollableModal/ScrollableModal";
 import { View } from "react-native";
 import { OnBuy5KAPICreditsButtonClicked } from "./bits_and_pieces/OnBuy5KAPICreditsButtonClicked";
+import { OnAPIInfoRequestBtnClicked } from "./bits_and_pieces/OnAPIInfoRequestBtnClicked";
+import { app_strings } from "src/stringRepos/AppStrings/AppStrings";
 
 /* PLOP_INJECT_GLOBAL_CODE */
 
@@ -58,6 +60,9 @@ export const CustomComponent = ({
   // Whether or not the Modal is shown on screen.
   const [showModal, setShowModal] = useState(false)
 
+  // your API data
+  const [yourAPIData, setYourAPIData] = useState(null);
+
   // a no arg callback that returns a component of your choice
   // here it's an UI that allows the user to press a subscribe button to subscribe to the API
   // then enter his fresh API in a form.
@@ -65,13 +70,13 @@ export const CustomComponent = ({
   const UIComponent = () =>
     <MsgFormButton
       fontFamily={"ComingSoon"}
-      message={"Use the button below to subscribe to the API, or to buy API Credits, then enter your API Key in the prompt, and finally, press the prompt button."}
+      message={app_strings.t("APIScreenMsg")}
       initialFormInput={defaultAPIKey}
-      formPlaceholder={"Enter your API Key here"}
+      formPlaceholder={app_strings.t("EnterAPIKeyHere")}
       onFormButtonClicked={(text) => {
         OnFormButtonClicked({ text, onInput });
       }}
-      buttonText={"Subscribe to the API or buy API Credits"}
+      buttonText={app_strings.t("APIButtonText")}
       onButtonClicked={() => {
         setShowModal(true);
 
@@ -91,16 +96,16 @@ export const CustomComponent = ({
       /* the url of the homepage, if omitted, the home button won't be shown in the iframe */
       //homeURL={"https://duckduckgo.com"}
       /* do we show the address bar in the iframe, or not ? */
-      showAddressBar={false}
+      showAddressBar={true}
       UIComponent={UIComponent}
     />
     <ScrollableModal
       inputs={[
         {
           id: "APISub",
-          title: "Subscribe to the API",
+          title: app_strings.t("SubAPIMsg"),
           type: "clickable_choice",
-          onClick: () => {
+          onClick:  () => {
             OnAPISubscribeButtonClicked({ setSubscribeUrl, setShowUI });
 
             setShowModal(false);
@@ -108,12 +113,23 @@ export const CustomComponent = ({
         },
         {
           id: "Buy5KCredits",
-          title: "Buy 5000 API Credits",
+          title:  app_strings.t("Buy5KMsg"),
           type: "clickable_choice",
           onClick: () => {
             OnBuy5KAPICreditsButtonClicked({ setSubscribeUrl, setShowUI });
 
             setShowModal(false);
+          }
+        },
+        {
+          id: "GetAPIData",
+          title: app_strings.t("GetFreshAPIInfo"),
+          buttonText: yourAPIData ? JSON.stringify(yourAPIData, null, 2) : app_strings.t("LemonButton"),
+          type: "clickable_choice",
+          onClick: () => {
+            OnAPIInfoRequestBtnClicked({  setYourAPIData, setShowUI });
+
+            //setShowModal(false);
           }
         }
       ]}

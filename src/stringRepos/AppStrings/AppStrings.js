@@ -13,6 +13,19 @@ const AppStrings = () => {
   const i18n = new I18n({
     src: {
       /* PLOP_INJECT_SRC_STRING */
+      APIScreenMsg: "Use the button below to subscribe to the API, or to buy API Credits, or to get info about your API Subscription, then enter your API Key in the prompt, and finally, press the prompt button.",
+      EnterAPIKeyHere: "Enter your API Key here",
+      APIButtonText: "The powerful API button !",
+      SubAPIMsg: "Subscribe to the API",
+      Buy5KMsg: "Buy 5000 API Credits",
+      GetFreshAPIInfo: `Press this button to get your freshest API info`,
+      LemonButton: "Press me",
+      LoginError: 'There was a problem during the login.',
+      LoginCancel: 'Login canceled',
+      Success: "Success",
+      Error: "Error",
+      "GetToolboxChoice": "What do you want to do ?",
+
       APIKeySuccess: `API Key given successfully !`,
       APICreditsError: "We couldn't generate a API Credits checkout link for you.... Try again, soldier !",
       LetsBuyAPICredits: "Let's go to the API Credits checkout page !",
@@ -72,7 +85,6 @@ const AppStrings = () => {
       "Toolbox": "Tools",
       "NoTools": "No tools available",
       "AddTool": "Add a tool",
-      "GetToolboxChoice": "What tool do you want to create?",
       "WrongTool": "This tool is crap",
       "SaveDBCloud": "Save your user data in the cloud",
       "BackupDBCloud": "Recover your user data, stored in the cloud",
